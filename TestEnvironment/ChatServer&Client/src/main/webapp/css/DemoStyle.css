@@ -1,0 +1,268 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900");
+
+* {
+    padding: 0px;
+    boxing-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+/*
+    This section defines the CSS styling for the body in general
+*/
+body {
+    font-family: "Roboto", sans-serif;
+    height: 100vh;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    background: linear-gradient(to bottom right, #F06292, #26A69A, #b779ca);
+    background-size: 200% 200%;
+
+    /*Defining the animations that will apply to the body (will be seen on each page)*/
+    animation: gradient 1s ease-in-out infinite;
+    animation: fadeIn ease 0.5s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+  }
+
+    /*Defining the animation where the homepage fades into the screen when first accessed*/
+    @keyframes fadeIn {
+        0% {
+        opacity:0;
+        }
+        100% {
+        opacity:1;
+        }
+    }
+  
+    /*Defining the animation where the background of the body changes from one color to another*/
+    @keyframes gradient {
+        0% {
+        background-position: 0% 50%;
+        }
+        50% {
+        background-position: 100% 50%;
+        }
+        100% {
+        background-position: 0% 50%;
+        }
+    }
+
+
+/*Below styling classes style the "blobs", aesthetic SVG elements*/
+.blob1 {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+
+    /*Defining the animations that will apply to the blob*/
+    animation-name: float;
+    animation-duration: 70s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite; /*blobs slowly move in a defined track forever to give a sense of motion*/
+  }
+  
+  /*defines the movement of the blob across the page*/
+  @keyframes float {
+    0% {
+      transform: translate(0, 0);
+    }
+    50% {
+      transform: translate(300px, 200px);
+    }
+    100% {
+      transform: translate(0, 0);
+    }
+  }
+
+
+  /*Same process for the second blob, but with a new animation keyframe to specify it's different movement track*/
+  .blob2 {
+    position: absolute;
+    top: 600px;
+    left: -600px;
+    width: 200px;
+    height: 400px;
+
+    animation-name: float1;
+    animation-duration: 50s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+  }
+  
+  @keyframes float1 {
+    0% {
+      transform: translate(300, 0);
+    }
+    50% {
+      transform: translate(-100px, 50px);
+    }
+    100% {
+      transform: translate(100, 150);
+    }
+  }
+
+  /*Same process for the third blob, but with a new animation keyframe to specify it's different movement track*/
+
+  .blob3 {
+    position: absolute;
+    top: 300px;
+    left: -1100px;
+    width: 300px;
+    height: 400px;
+    
+    animation-name: float2;
+    animation-duration: 60s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+  }
+  
+  @keyframes float2 {
+    0% {
+      transform: translate(300, 0);
+    }
+    50% {
+      transform: translate(-100px, 50px);
+    }
+    100% {
+      transform: translate(100, 150);
+    }
+  }
+
+
+.blinker {
+    display: inline-flex;
+    width: 0.5em;
+    height: 1em;
+    margin-left: 0.1em;
+    background-color: #fff;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
+
+.logo-name
+{
+    position: absolute;
+    top: 180px;
+    left: 73px;
+    font-size: 28px;
+    font-weight: 500;
+
+    
+}
+
+#home
+{
+    position: absolute;
+    top: 15%;
+    left: -80%;
+    color: white;
+
+    animation: fadeIn ease 0.5s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+  }
+
+    @keyframes fadeIn {
+        0% {
+        opacity:0;
+        }
+        100% {
+        opacity:1;
+        }
+    }
+
+#chat .special
+{
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    color: white;
+}
+
+
+
+.app
+{
+    position: fixed;
+    width: 100%;
+    left: -650px;
+    height: 55%;
+    max-width: 700px;
+    background: #fff;
+    border-radius: 30px 30px 20px 20px;
+}
+
+.chat-screen .typebox
+{
+    position: absolute;
+    top: 15px;
+}
+
+.chat-screen .typebox textarea
+{
+    flex: 1;
+    height: 20px;
+    outline: none;
+    resize: none;
+    font-size: 14px;
+    padding: 15px;
+    border-radius: 20px;
+}
+
+.chat-screen textarea:is(:focus, :valid)
+{
+    border-color: #4671EA;
+}
+
+.chat-screen textarea::-webkit-scrollbar {
+    width: 0px;
+}
+.chat-screen textarea {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+center
+{
+    position: absolute;
+}
+
+#add-room
+{
+    position: relative;
+    top: 400px;
+}
+#refresh-rooms
+{
+    position: relative;
+    top: 450px;
+    height: 50px;
+    width: 150px;
+    background-color: #4671EA;
+    color: white;
+    left: 50px;
+    cursor: pointer;
+    border-radius: 20px;
+}
+
+
+.Chat-list-table-button
+{
+    background-color: white;
+    border: none;
+    padding: 5px;
+    text-align: center;
+    width: 250px;
+    cursor: pointer;
+}
+
+.Chat-list-table-button:hover {
+    color: #0097A7;
+}
+
