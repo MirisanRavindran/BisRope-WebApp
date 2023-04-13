@@ -208,67 +208,62 @@ body {
     border-radius: 20px;
 }
 
-.messagContainer{
+.roomList{
     position: fixed;
-    left: 650px;
-    top: 350px;
-    padding: 10px;
-    background-color: transparent;
-    margin-right: 30px;
-    border-radius: 20px;
-}
-
-.dmChatScreen{
-    position: fixed;
-    left: 800px;
+    left: 100px;
     top: 100px;
-    width: 400px;
-    padding: 10px;
-    height: 750px;
-    background-color: transparent;
-    margin-right: 30px;
-    border-radius: 20px;
+    width: 100px;
+    height: 825px;
     background-color: aliceblue;
+    border-radius: 20px;
 }
 
-.DMlogo{
+.ServerTitle{
     position: fixed;
     left: 100px;
     top: 20px;
     
 }
 
-.typebox{
-    border-radius: 10px;
-}
-
-.messages{
-    background-color: lightgray;
-}
-
-.textInputDM{
+.serverRoomList{
     position: fixed;
-    left: 200px;
-    top: 200px;
-    width: 400px;
-    padding: 10px;
-    height: 50px;
-    background-color: transparent;
-    margin-right: 30px;
-    border-radius: 20px;
-    background-color: rgb(246, 199, 255);
-}
-
-.dmSendButton{
-    position: fixed;
-    left: 650px;
-    top: 200px;
+    left: 100px;
+    top: 100px;
     width: 100px;
-    padding: 10px;
-    height: 70px;
-    background-color: pin;
-    margin-right: 30px;
-    border-radius: 20px;
-    background-color: rgb(229, 194, 236);
+    background-color: aliceblue;
 }
 
+.serverRoomTitle{
+    position: fixed;
+    left: 100px;
+    top: 20px;
+    width: 200px;
+    height: 40px;
+    background-color: #26A69A;
+}
+
+.serverRoomTitle:hover{
+    transform: translate(0px,-10px);
+    transition: all 0.25s ease-in-out;
+    box-shadow: 5px 5px 5px #E3F2FD;
+}
+
+
+.userList{
+    position: fixed;
+    left: 1650px;
+    top: 100px;
+    width: 200px;
+    height: 825px;
+    background-color: aliceblue;
+    border-radius: 20px;
+}
+
+.userListTitle{
+    position: fixed;
+    left: 1650px;
+    top: 20px;
+    width: 200px;
+    height: 40px;
+    background-color: #26A69A;
+}
