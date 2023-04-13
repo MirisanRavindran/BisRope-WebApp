@@ -114,6 +114,9 @@ function enterRoom(code) {
     });
 }
 
+function ChooseImage() {
+    document.getElementById('imageFile').click();
+}
 
 function timestamp() {
     var d = new Date(), minutes = d.getMinutes();
