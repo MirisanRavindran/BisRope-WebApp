@@ -5,7 +5,7 @@
    <meta name="viewpoint" content="width=device-width, initial-scale=1.0">
 
    <title>Bisrope Direct Message</title>
-   <link rel="stylesheet" type="text/css" href="CSS/homePageCSS/generalHomePage.css"> 
+   <link rel="stylesheet" type="text/css" href="CSS/dmPageCSS/generalDMPageCss.css"> 
    <link rel="stylesheet" type="text/css" href="CSS/normalize.css">
 
 </head>
@@ -25,6 +25,28 @@
 
         </div>
     </header>
+
+    <div class="messageContainer">
+
+        <div class="dmChatScreen">
+            <div class="header">
+              <div class="DMlogo"><h2>Direct Message</h2></div>
+            </div>
+    
+            <div class="messages">
+              <div id="update-user" class="update"></div>
+              <div class="message other-message"></div>
+            </div>
+    
+            <div class="typebox">
+              <textarea onwheel="scrollTextarea(event)" class="textInputDM" type="text" id="message-input" placeholder="Text Message" required ></textarea>
+              <button id="send-message" class="dmSendButton" onclick="sendMessage()">Send</button>
+            </div>
+          </div>
+        </div>
+
+
+    </div>
 
 
  

@@ -154,7 +154,7 @@ body {
 
 .dmButton{
     position: fixed;
-    left: 650px;
+    left: 100px;
     top: 100px;
  
     background-color: transparent;
@@ -162,8 +162,8 @@ body {
 
 .plusButton{
     position: fixed;
-    left: 650px;
-    top: 150px;
+    left: 1660px;
+    top: 885px;
     
     border-radius: 15px;
     background-color: #222e3a;
@@ -171,8 +171,8 @@ body {
 
 .plusButton1{
     position: fixed;
-    left: 650px;
-    top: 220px;
+    top: 885px;
+    left: 60px;
     
     border-radius: 15px;
     background-color: #222e3a;
@@ -180,8 +180,8 @@ body {
 
 .serverMessage {
     position: fixed;
-    left: 700px;
-    top: 130px;
+    left: 1705px;
+    top: 870px;
     padding: 10px;
     background-color: transparent;
     margin-right: 30px;
@@ -190,8 +190,8 @@ body {
 
 .DMMessage {
     position: fixed;
-    left: 700px;
-    top: 200px;
+    left: 110px;
+    top: 870px;
     padding: 10px;
     background-color: transparent;
     margin-right: 30px;
