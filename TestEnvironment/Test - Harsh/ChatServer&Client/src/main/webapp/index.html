@@ -70,7 +70,7 @@
       <div class="imgbtn">
         <a onclick="ChooseImage()">
           Send Image
-          <input type="file" id="imageFile" accept="image/*" style="display: none"/>
+          <input type="file" id="imageFile" onchange="SendImage(this);" accept="image/*" style="display: none"/>
         </a>
       </div>
       <input title="Chat Input" id="input" type="text" style="display: block; width: 100%; border-width: 1px 0 1px 0;"

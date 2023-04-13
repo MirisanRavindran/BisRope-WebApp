@@ -118,6 +118,16 @@ function ChooseImage() {
     document.getElementById('imageFile').click();
 }
 
+function SendImage(event) {
+    var file = event.files[0];
+
+    if(!file.type.match("image.*")) {
+        alert("Please select image only.");
+    }
+    else {
+        alert("image send...");
+    }
+}
 function timestamp() {
     var d = new Date(), minutes = d.getMinutes();
     if (minutes < 10) minutes = '0' + minutes;
