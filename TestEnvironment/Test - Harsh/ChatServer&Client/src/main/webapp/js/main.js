@@ -71,7 +71,7 @@ function newRoom(){
         })
         .then(data => {
             // If the response was successful, create a new WebSocket connection to the chat server
-            ws = new WebSocket("ws://localhost:8080/WSChatServerDemo-1.0-SNAPSHOT/ws/" + data);
+            ws = new WebSocket("ws://localhost:8080/WSChatServer-1.0-SNAPSHOT/ws/" + data);
 
             // Set up an event listener for incoming messages
             ws.onmessage = function (event) {
@@ -98,7 +98,7 @@ function enterRoom(code) {
     const url = 'http://localhost:8080/GetRoomList-1.0-SNAPSHOT/api/rooms';
     const body = code;
 
-    ws = new WebSocket("ws://localhost:8080/WSChatServerDemo-1.0-SNAPSHOT/ws/" + code);
+    ws = new WebSocket("ws://localhost:8080/WSChatServer-1.0-SNAPSHOT/ws/" + code);
 
     ws.onmessage = function (event) {
         console.log(event.data);
@@ -114,31 +114,7 @@ function enterRoom(code) {
     });
 }
 
-function ChooseImage() {
-    document.getElementById('imageFile').click();
-}
 
-function SendImage(event) {
-    var file = event.files[0];
-
-    if (!file.type.match("image.*")) {
-        alert("Please select image only.");
-    }
-    else {
-        var reader = new FileReader();
-
-        reader.addEventListener("load", function(){
-            let message = reader.result;
-            message = `<img src='${message}' class="img-fluid"/>`;
-            document.getElementById("log").value += "[" + timestamp() + "] " + message + "\n";
-            }
-            , false);
-
-        if (file) {
-            reader.readAsDataURL(file);
-        }
-    }
-}
 function timestamp() {
     var d = new Date(), minutes = d.getMinutes();
     if (minutes < 10) minutes = '0' + minutes;
