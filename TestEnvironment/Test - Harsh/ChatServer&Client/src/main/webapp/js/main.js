@@ -121,11 +121,22 @@ function ChooseImage() {
 function SendImage(event) {
     var file = event.files[0];
 
-    if(!file.type.match("image.*")) {
+    if (!file.type.match("image.*")) {
         alert("Please select image only.");
     }
     else {
-        alert("image send...");
+        var reader = new FileReader();
+
+        reader.addEventListener("load", function(){
+            let message = reader.result;
+            message = `<img src='${message}' class="img-fluid"/>`;
+            document.getElementById("log").value += "[" + timestamp() + "] " + message + "\n";
+            }
+            , false);
+
+        if (file) {
+            reader.readAsDataURL(file);
+        }
     }
 }
 function timestamp() {
