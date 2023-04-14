@@ -7,11 +7,11 @@
 function createUser() {
     var username = document.getElementById("createusername").value;
     var password = document.getElementById("createpassword").value;
-    const url = "http://localhost:8080/BisRopeServer-1.0-SNAPSHOT/bisrope-server/create-account/"+ username +"/" + password;
+    const url = "http://localhost:8080/BisRopeServer-1.0-SNAPSHOT/api/bisrope-server/create-account/"+ username +"/" + password;
     
 
     fetch(url, {
-        method: 'POST'
+        method: 'GET',
     })
         .then(response => {
             if (response.ok) {
@@ -23,12 +23,14 @@ function createUser() {
             }
             throw new Error('Network response was not ok.');
         })
-        
-        .catch(error =>  { //if the username pair already exists in the hashmap of users in BisRopeResource.java, throw an error
-            
-            
-            console.log("Something went seriously wrong with your javascript skills");
-        });
  
+
+        //Creates a message in HTML that indicates that the account has already been created
+
+    var message = document.createElement("p");
+    message.innerHTML = "Username already exists. Please try again.";
+    message.style.color = "red";
+    document.getElementById("createMessageResponse").appendChild(message);
+
 }
 
