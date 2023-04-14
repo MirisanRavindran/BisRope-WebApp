@@ -86,9 +86,9 @@ function newRoom(){
                 {
                     el.setAttribute("class", "text-bubble")
                     el.innerHTML = `
-                        <div class="Messages">
+                        <div class="Message">
                             <div>
-                                <p id="log">${message.message}</p>
+                                <div><p>${message.message}</p><div>
                             </div>
                         </div>
                     `;
@@ -100,6 +100,16 @@ function newRoom(){
                     el.innerHTML = `
                         <div>
                             <h3 id="ServerMessage">${message.message}</h3>
+                        </div>
+                    `;
+                    messageContainer.appendChild(el);
+                }
+                else if (message.type === "image") {
+                    console.log(message)
+                    el.setAttribute("class", "image-container")
+                    el.innerHTML = `
+                        <div>
+                            <img src='${message.message}' class="img-fluid"/>
                         </div>
                     `;
                     messageContainer.appendChild(el);
@@ -136,9 +146,9 @@ function enterRoom(code) {
         {
             el.setAttribute("class", "text-bubble")
             el.innerHTML = `
-                        <div class="Messages">
+                        <div class="Message">
                             <div>
-                                <p id="log">${message.message}</p>
+                                <div><p>${message.message}</p><div>
                             </div>
                         </div>
                     `;
@@ -154,11 +164,21 @@ function enterRoom(code) {
                     `;
             messageContainer.appendChild(el);
         }
+        else if (message.type === "image") {
+            console.log(message)
+            el.setAttribute("class", "image-container")
+            el.innerHTML = `
+                        <div>
+                            <img src='${message.message}' class="img-fluid"/>
+                        </div>
+                    `;
+            messageContainer.appendChild(el);
+        }
 
     }
     document.getElementById("inputText").addEventListener("keyup", function (event) {
         if (event.keyCode === 13) {
-            let request = {"type":"Server", "msg":event.target.value};
+            let request = {"type":"chat", "msg":event.target.value};
             ws.send(JSON.stringify(request));
             event.target.value = "";
         }
@@ -186,16 +206,9 @@ function SendImage(event) {
 
         reader.addEventListener("load", function(){
                 let message = reader.result;
-                message = `<img src='${message}' class="img-fluid"/>`;
-                let messageContainer = document.querySelector(".textArea");
-                let el = document.createElement("div");
-                el.setAttribute("class", "image-container")
-                el.innerHTML = `
-                        <div>
-                            <img ${message} 
-                        </div>
-                    `;
-                messageContainer.appendChild(el);
+                let request = {"type":"image", "msg": message};
+                ws.send(JSON.stringify(request));
+
                 //document.getElementById("image").innerHTML += "[" + timestamp() + "] " + message + "\n";
             }
             , false);
@@ -224,6 +237,19 @@ container.addEventListener('wheel', (e) => {
         e.preventDefault();
     }
 });
+
+
+function showEmojiPanel() {
+    document.getElementById("emoji")
+}
+
+function hideEmojiPanel() {
+    document.getElementById("emoji").setAttribute("style", "display:none;");
+}
+
+function getEmoji(control) {
+    document.getElementById("log").innerHTML += control.textContent;
+}
 
 
 

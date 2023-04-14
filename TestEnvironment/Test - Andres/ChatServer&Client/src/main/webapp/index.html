@@ -36,12 +36,6 @@
   </div>
 </div>
 
-<div class="imgbtn">
-  <a onclick="ChooseImage()">
-    Send Image
-    <input type="file" id="imageFile" onchange="SendImage(this);" accept="image/*" style="display: none"/>
-  </a>
-</div>
 
 <!--Div container holds the content of each page with a corresponing tab button -->
 <div class = "tab-content">
@@ -74,6 +68,8 @@
     <div class="ChatBox">
       <div class="ChatSpace" >
         <div class="textArea" >
+          <div class="Message">
+          </div>
         </div>
       </div>
       <div class="inputArea">
@@ -103,6 +99,25 @@
         </table>
       </center>
     </div>
+  </div>
+
+  <div class="imgbtn">
+    <a onclick="ChooseImage()">
+      Input File
+      <input type="file" id="imageFile" onchange="SendImage(this);" accept="image/*" style="display: none"/>
+    </a>
+  </div>
+  <div class="emoji-container">
+    <img class = "img-frame" src="Emoji-Face.png" onclick="runFunction1()" alt="Image 1">
+    <img class = "img-frame" src="Emoji-Face.png" onclick="runFunction2()" alt="Image 2">
+    <img class = "img-frame" src="Emoji-Face.png" onclick="runFunction3()" alt="Image 3">
+    <img class = "img-frame" src="Emoji-Face.png" onclick="runFunction4()" alt="Image 4">
+    <img class = "img-frame" src="Emoji-Face.png" onclick="runFunction5()" alt="Image 5">
+    <img class = "img-frame" src="Emoji-Face.png" onclick="runFunction6()" alt="Image 6">
+    <img class = "img-frame" src="Emoji-Face.png" onclick="runFunction7()" alt="Image 7">
+    <img class = "img-frame" src="Emoji-Face.png" onclick="runFunction8()" alt="Image 8">
+    <img class = "img-frame" src="Emoji-Face.png" onclick="runFunction9()" alt="Image 9">
+    <img class = "img-frame" src="Emoji-Face.png" onclick="runFunction10()" alt="Image 10">
   </div>
 
 
