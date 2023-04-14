@@ -15,7 +15,7 @@
 {
     display: block;
     position: relative;
-    width: 99.8%;
+    width: 100%;
     resize: none;
     overflow: auto;
     scrollbar-width: none; /* Hide the scrollbar for Firefox */
@@ -29,16 +29,17 @@
 
 
 .text-bubble {
-    position: relative;
-    border-radius: 10px;
+    display: flex;
     padding: 10px;
-    max-width: 60%; /* Set a maximum width */
-    max-height: 1000px; /* Set a maximum height */
-    overflow: auto; /* Add scrollbars if content exceeds max-height */
-    margin-left: 20px;
-    margin-bottom: 10px;
-    background-color: #3F51B5;
 }
+
+.text-bubble  > div{
+    max-width: 60%;
+    background-color: #3F51B5;
+    padding: 10px;
+    border-radius: 20px;
+}
+
 .text-bubble p{
     margin: 0;
     padding: 0;
@@ -60,6 +61,7 @@
     color: white;
     padding-top: 20px;
     font-weight: 500;
+    align-items: flex-start;
 }
 
 .inputArea
@@ -90,8 +92,9 @@
 {
     position: relative;
     max-width: 100%;
-    height: 38px;
+    height: auto;
     margin-bottom: 20px;
+
 }
 
 #ServerMessage
@@ -116,7 +119,7 @@ h3
     width: 300px;
     height: 210px;
     overflow: hidden;
-    margin-left: 20px;
+    margin: 10px 0px 0px 10px;
     padding: 10px;
     align-self: flex-end;
 }
@@ -126,3 +129,35 @@ h3
     height: 100%;
     object-fit: cover;
 }
+
+.imgbtn
+{
+    background-color: #111111;
+    position: relative;
+    width: 72px;
+    height: auto;
+    padding: 10px;
+    top: 810px;
+    left: -690px;
+}
+
+.imgbtn a
+{
+    color: white;
+}
+
+.emoji-container {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    top: 810px;
+    left: -690px;
+}
+
+.img-frame {
+    width: 45px;
+    height: 45px;
+    cursor: pointer;
+
+}
+
