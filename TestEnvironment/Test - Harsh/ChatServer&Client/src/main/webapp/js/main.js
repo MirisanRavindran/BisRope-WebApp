@@ -148,7 +148,7 @@ function hideEmojiPanel() {
 }
 
 function getEmoji(control) {
-    document.getElementById("log").innerHTML = control.textContent;
+    document.getElementById("log").innerHTML += control.textContent;
 }
 function timestamp() {
     var d = new Date(), minutes = d.getMinutes();

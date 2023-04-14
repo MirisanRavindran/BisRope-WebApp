@@ -1,0 +1,98 @@
+.ChatBox
+{
+    display: block;
+    width: 400%;
+    max-width: 95%;
+    left: -85%;
+    top: 19%;
+    resize: none;
+    position: fixed;
+}
+
+
+.ChatSpace
+{
+    display: block;
+    position: relative;
+    width: 103.03%;
+    resize: none;
+}
+
+
+
+.text-bubble {
+    position: relative;
+    border-radius: 10px;
+    padding: 10px;
+    max-width: 60%; /* Set a maximum width */
+    max-height: 1000px; /* Set a maximum height */
+    overflow: auto; /* Add scrollbars if content exceeds max-height */
+    margin-left: 20px;
+    margin-bottom: 10px;
+    background-color: #3F51B5;
+}
+.text-bubble p{
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    color: white;
+}
+
+.textArea
+{
+    display: block;
+    width: 97%;
+    height: 600px;
+    resize: none;
+    border: 0;
+    border-radius: 20px 20px 0px 0px;
+    background-color: #f2c3ff;
+    position: relative;
+    top: -11%;
+    color: white;
+    padding-top: 20px;
+    font-weight: 500;
+}
+
+.inputArea
+{
+    display: block;
+    height: 50px;
+    width: 100%;
+    background-color: #f2c3ff;
+    position: relative;
+    top: 81.7%;
+    border-radius: 0px 0px 20px 20px;
+}
+
+#inputText
+{
+    height: 80%;
+    width: 90%;
+    border-width: 0px 0 0px 0;
+    padding-left: 15px;
+    position: relative;
+    top: 10%;
+    left: 3%;
+    border-radius: 20px;
+    border-color: #111111;
+}
+
+.Messages
+{
+    position: relative;
+    max-width: 100%;
+    height: 38px;
+    margin-bottom: 20px;
+}
+
+#ServerMessage
+{
+    text-align: center;
+}
+
+#image
+{
+    height: 20px;
+    width: 20px;
+}

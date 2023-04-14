@@ -7,6 +7,7 @@
   <meta name="viewpoint" content="width=device-width, initial-scale=1.0">
   <link href="css/DemoStyle.css" rel="stylesheet"/>
   <link href="css/blobs.css" rel="stylesheet"/>
+  <link href="css/main.css" rel="stylesheet"/>
   <link href="css/chat.css" rel="stylesheet"/>
   <link href="css/tabs.css" rel="stylesheet"/>
   <link href="css/about.css" rel="stylesheet"/>
@@ -20,8 +21,8 @@
 <!--Div container for the three buttons that direct the user to the homepage, chat page, and about page-->
 <div class="top-bar">
   <ul class="tabs">
-    <li data-tab-target="#home" class="active tab">Home</li>
-    <li data-tab-target="#chat" class="tab">Chat</li>
+    <li data-tab-target="#home" class="tab">Home</li>
+    <li data-tab-target="#chat" class="active tab">Chat</li>
     <li data-tab-target="#about" class="tab">About</li>
   </ul>
 </div>
@@ -35,6 +36,13 @@
   </div>
 </div>
 
+<div class="imgbtn">
+  <a onclick="ChooseImage()">
+    Send Image
+    <input type="file" id="imageFile" onchange="SendImage(this);" accept="image/*" style="display: none"/>
+  </a>
+</div>
+
 <!--Div container holds the content of each page with a corresponing tab button -->
 <div class = "tab-content">
 
@@ -44,7 +52,7 @@
   <img id="elblobbo3" src="Images/blob3.svg" class="blob3" width="200" height="200">
 
   <!--The content of the homepage, divided into individual lines to permit the type-printing effect-->
-  <div id="home" class="active fade"  content >
+  <div id="home" content >
     <h1>Home</h1>
     <p id="line1"></p>
     <p id="line2"></p>
@@ -56,61 +64,47 @@
     <h3 id="line8"><span class="blinker"></span></h3>
   </div>
 
-
   <!--The content of the chat page-->
-  <div id="chat" content>
+  <div id="chat" class="active fade" content>
 
     <!--Tutorial image styled in the document-->
     <img id="infoCard" src="Images/infoCard.png" class = "infoCard" width="300" height="300" style="position: absolute; top: 50px; left: -400px;">
 
+
+    <div class="ChatBox">
+      <div class="ChatSpace" >
+        <div class="textArea" >
+          <div class="Messages">
+            <img  id = "image">
+          </div>
+        </div>
+      </div>
+      <div class="inputArea">
+        <input autocomplete="off" title="Chat Input" placeholder="Message" id="inputText" type="text" autofocus/>
+      </div>
+    </div>
+
+
     <!--Displays a list of active chat rooms, and an option to create a new one-->
-    <div class="app">
-      <textarea title="Chat Log" id="log" readonly
-                style="display: block; width: 100%; height: 600px; resize: none; margin: 0; padding: 0; border: 0;"></textarea>
-      <input title="Chat Input" id="input" type="text" style="display: block; width: 100%; border-width: 1px 0 1px 0;"
-             autofocus/>
-      <div class="infoCard">
-
+    <div class="chat-list">
+      <div class="chat-list-title">
+        List of chat rooms
       </div>
-
-      <div class="chat-list">
-        <div class="chat-list-title">
-          List of chat rooms
-
+      <center>
+        <div class="join-room-button">
+          <button id="add-room" onclick="newRoom()">Create and join new room</button>
         </div>
-        <center>
-          <div class="join-room-button">
-            <button id="add-room" onclick="newRoom()">Create and join new room</button>
-          </div>
-          <div class="join-room-button">
-            <button id="refresh-rooms" onclick="getRooms()">Refresh</button>
-          </div>
-          <table id="Chat-list-table">
-            <thead>
-            <tr></tr>
-            </thead>
-            <tbody>
-            </tbody>
-          </table>
-        </center>
-      </div>
-      <!--Class containing the chatroom interface-->
-
-      <div class="screen chat-screen">
-        <div class="header">
-          <div class="logo">Chatroom</div>
+        <div class="join-room-button">
+          <button id="refresh-rooms" onclick="getRooms()">Refresh</button>
         </div>
-
-        <div class="messages">
-          <div id="update-user" class="update"></div>
-          <div class="message other-message"></div>
-        </div>
-
-        <div class="typebox">
-          <textarea onwheel="scrollTextarea(event)" type="text" id="message-input" placeholder="Text Message" required ></textarea>
-          <button id="send-message" onclick="sendMessage()">Send</button>
-        </div>
-      </div>
+        <table id="Chat-list-table">
+          <thead>
+          <tr></tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+      </center>
     </div>
   </div>
 
@@ -119,7 +113,7 @@
 
 
 
-<!--The about page, which contains information about the team-->
+  <!--The about page, which contains information about the team-->
 
   <div id="about" content>
     <h1>About the Team</h1>
