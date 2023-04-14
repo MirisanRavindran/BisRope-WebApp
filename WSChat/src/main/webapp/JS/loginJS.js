@@ -17,9 +17,13 @@ function createUser() {
             if (response.ok) {
                 // If the response status is "ok", return the response text
                 console.log(response.text);
+                alert("Account created successfully");
             }
             if (response.status === 401){
                 console.log("Username already exists. Please try again.");
+                alert("Username already exists. Please try again.");
+
+
             }
             throw new Error('Network response was not ok.');
         })
@@ -27,10 +31,7 @@ function createUser() {
 
         //Creates a message in HTML that indicates that the account has already been created
 
-    var message = document.createElement("p");
-    message.innerHTML = "Username already exists. Please try again.";
-    message.style.color = "red";
-    document.getElementById("createMessageResponse").appendChild(message);
+    
 
 }
 
