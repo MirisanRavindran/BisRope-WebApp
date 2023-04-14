@@ -11,7 +11,7 @@ public class BisropeUsers {
     }
 
     public void createUser(String username, String password){
-        User user = new User(username, password,);
+        User user = new User(username, password);
         bisropeUsers.put(username,user);
     }
 

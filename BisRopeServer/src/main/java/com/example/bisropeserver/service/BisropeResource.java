@@ -3,11 +3,12 @@ package com.example.bisropeserver.service;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
-import jakarta.ws.rs.Post;
+import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Produces;
-import com.example.bisropeserver.*;
 import com.example.bisropeserver.util.BisropeServers;
-import com.example.bisropeserver.util.BisropeUsers;;
+import com.example.bisropeserver.util.BisropeUsers;
+import jakarta.ws.rs.core.Response;
+
 
 @Path("/bisrope-server")
 public class BisropeResource {
@@ -60,12 +61,13 @@ public class BisropeResource {
 
     @POST
     @Path("/join-server/{server-id}/{username}")
-    public void joinServer(@PathParam("server-id") String id, @PathParam("username") String username) {
+    public Response joinServer(@PathParam("server-id") String id, @PathParam("username") String username) {
         if(!servers.isServer(id)){
             return Response.status(401).entity("Invalid server ID.").build();
         }
         servers.joinServer(id, username);
         users.addServertoUser(id, username);
+        return Response.status(200).entity("Server Joined").build();
     }
 
     @GET
