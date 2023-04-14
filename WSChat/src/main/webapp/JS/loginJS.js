@@ -4,10 +4,10 @@
 
 
 //Function to call backend with a restful fetch to create a new user
-function createUser(username, password) {
+function createUser() {
+    var username = document.getElementById("createusername").value;
+    var password = document.getElementById("createpassword").value;
     const url = "http://localhost:8080/BisRopeServer-1.0-SNAPSHOT/bisrope-server/create-account/"+ username +"/" + password;
-    var username = document.getElementById("username").value;
-    var password = document.getElementById("password").value;
     
 
     fetch(url, {
