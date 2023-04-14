@@ -10,9 +10,9 @@ public class BisropeUsers {
         return bisropeUsers.get(email);
     }
 
-    public void createUser(String username, String password, String email){
+    public void createUser(String email, String username, String password){
         User user = new User(username, password, email);
-        bisropeUsers.put(user);
+        bisropeUsers.put(email,user);
     }
 
     public boolean isUser(String email){
@@ -21,6 +21,14 @@ public class BisropeUsers {
         }
         else{
             return false;
+        }
+    }
+
+    public boolean isPassword(String email, String password){
+        if (bisropeUsers.containsKey(email)){
+            if (bisropeUsers.get(email).equals(password)){
+                return true;
+            }
         }
     }
 }

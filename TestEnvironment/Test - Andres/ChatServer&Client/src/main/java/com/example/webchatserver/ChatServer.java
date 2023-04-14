@@ -6,7 +6,11 @@ import jakarta.websocket.server.ServerEndpoint;
 import org.json.JSONObject;
 
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.nio.ByteBuffer;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -21,7 +25,7 @@ public class ChatServer {
         roomList.put(session.getId(), roomID); // adding userID to a room
         System.out.println("Room joined ");
 
-        session.getBasicRemote().sendText("{\"type\": \"chat\", \"message\":\"(Server ): Welcome to the chat room. Please state your username to begin.\"}");
+        session.getBasicRemote().sendText("{\"type\": \"Server\", \"message\":\"(Server ): Welcome to the chat room. Please state your username to begin.\"}");
     }
 
     @OnClose
@@ -39,7 +43,7 @@ public class ChatServer {
             int countPeers = 0;
             for (Session peer : session.getOpenSessions()){ //broadcast this person left the server
                 if(roomList.get(peer.getId()).equals(roomID)) { // broadcast only to those in the same room
-                    peer.getBasicRemote().sendText("{\"type\": \"chat\", \"message\":\"(Server): " + username + " left the chat room.\"}");
+                    peer.getBasicRemote().sendText("{\"type\": \"Server\", \"message\":\"(Server): " + username + " left the chat room.\"}");
                     countPeers++; // count how many peers are left in the room
                 }
             }
@@ -70,21 +74,39 @@ public class ChatServer {
             }
         }else{ //first message is their username
             usernames.put(userID, message);
-            session.getBasicRemote().sendText("{\"type\": \"chat\", \"message\":\"(Server ): Welcome, " + message + "!\"}");
+            session.getBasicRemote().sendText("{\"type\": \"Server\", \"message\":\"(Server ): Welcome, " + message + "!\"}");
 
 
             // broadcasting it to peers in the same room
             for(Session peer: session.getOpenSessions()){
                 // only announce to those in the same room as me, excluding myself
                 if((!peer.getId().equals(userID)) && (roomList.get(peer.getId()).equals(roomID))){
-                    peer.getBasicRemote().sendText("{\"type\": \"chat\", \"message\":\"(Server): " + message + " joined the chat room.\"}");
+                    peer.getBasicRemote().sendText("{\"type\": \"Server\", \"message\":\"(Server): " + message + " joined the chat room.\"}");
                 }
             }
         }
-
     }
 
+    @ServerEndpoint("/image")
+    public class ImageWebSocket {
+        @OnMessage
+        public void onMessage(Session session, ByteBuffer buffer) throws IOException {
+            // Convert the ByteBuffer to a BufferedImage
+            BufferedImage image = ImageIO.read(bufferToInputStream(buffer));
 
+            // Convert the BufferedImage to a byte array
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            ImageIO.write(image, "jpg", baos);
+            byte[] imageData = baos.toByteArray();
 
+            // Send the byte array as a binary message through the WebSocket
+            session.getBasicRemote().sendBinary(ByteBuffer.wrap(imageData));
+        }
 
+        private java.io.InputStream bufferToInputStream(ByteBuffer buffer) {
+            byte[] bytes = new byte[buffer.remaining()];
+            buffer.get(bytes);
+            return new java.io.ByteArrayInputStream(bytes);
+        }
+    }
 }
