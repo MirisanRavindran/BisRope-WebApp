@@ -10,8 +10,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="002175e1-637d-472a-a954-c12e192adba4" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/.name" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/webchatserver/ChatServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/webchatserver/ChatServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Test - Harsh/ChatServer&amp;Client/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Test - Harsh/ChatServer&amp;Client/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Test - Harsh/ChatServer&amp;Client/src/main/java/com/example/webchatserver/ChatServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Test - Harsh/ChatServer&amp;Client/src/main/java/com/example/webchatserver/ChatServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Test - Harsh/ChatServer&amp;Client/src/main/webapp/css/chat.css" beforeDir="false" afterPath="$PROJECT_DIR$/../../Test - Harsh/ChatServer&amp;Client/src/main/webapp/css/chat.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Test - Harsh/ChatServer&amp;Client/src/main/webapp/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../Test - Harsh/ChatServer&amp;Client/src/main/webapp/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Test - Harsh/ChatServer&amp;Client/src/main/webapp/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../Test - Harsh/ChatServer&amp;Client/src/main/webapp/js/main.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,7 +22,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
   </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
@@ -109,6 +112,7 @@
       <workItem from="1681136238635" duration="2021000" />
       <workItem from="1681193515488" duration="1596000" />
       <workItem from="1681196203627" duration="860000" />
+      <workItem from="1681405159093" duration="169000" />
     </task>
     <servers />
   </component>

@@ -76,14 +76,15 @@ function newRoom(){
             // Set up an event listener for incoming messages
             ws.onmessage = function (event) {
                 console.log(event.data);
+                // Parse the incoming message and append it to the chat log on the web page
                 let message = JSON.parse(event.data);
-                document.getElementById("log").innerHTML += "[" + timestamp() + "] " + message.message + "<br>";
+                document.getElementById("log").textContent += "[" + timestamp() + "] " + message.message + "\n";
             }
-            document.getElementById("input").addEventListener("keydown", function (event) {
+            document.getElementById("input").addEventListener("keyup", function (event) {
                 if (event.keyCode === 13) {
                     let request = {"type":"chat", "msg":event.target.textContent};
                     ws.send(JSON.stringify(request));
-                    event.target.textContent = "";
+                    event.target.value = "";
                 }
             });
         })
@@ -102,9 +103,9 @@ function enterRoom(code) {
     ws.onmessage = function (event) {
         console.log(event.data);
         let message = JSON.parse(event.data);
-        document.getElementById("log").innerHTML += "[" + timestamp() + "] " + message.message + "<br>";
+        document.getElementById("log").textContent += "[" + timestamp() + "] " + message.message + "\n";
     }
-    document.getElementById("input").addEventListener("keydown", function (event) {
+    document.getElementById("input").addEventListener("keyup", function (event) {
         if (event.keyCode === 13) {
             let request = {"type":"chat", "msg":event.target.textContent};
             ws.send(JSON.stringify(request));
@@ -136,6 +137,18 @@ function SendImage(event) {
             reader.readAsDataURL(file);
         }
     }
+}
+
+function showEmojiPanel() {
+    document.getElementById("emoji")
+}
+
+function hideEmojiPanel() {
+    document.getElementById("emoji").setAttribute("style", "display:none;");
+}
+
+function getEmoji(control) {
+    document.getElementById("log").innerHTML = control.textContent;
 }
 function timestamp() {
     var d = new Date(), minutes = d.getMinutes();

@@ -65,13 +65,17 @@
 
     <!--Displays a list of active chat rooms, and an option to create a new one-->
     <div class="app">
-      <div title="Chat Log" id="log" readonly
-                style="display: block; width: 100%; height: 600px; resize: none; margin: 0; padding: 0; border: 0;"></div>
+      <span title="Chat Log" id="log" readonly
+                style="display: block; width: 100%; height: 600px; resize: none; margin: 0; padding: 0; border: 0;"></span>
       <div class="imgbtn">
         <a onclick="ChooseImage()">
           Send Image
           <input type="file" id="imageFile" onchange="SendImage(this);" accept="image/*" style="display: none"/>
         </a>
+      </div>
+      <div id="smiley">
+        <a id="emoji" onclick="showEmojiPanel()">Send Emoji</a>
+        <a onclick="getEmoji(this)">&#128540;</a>
       </div>
       <input title="Chat Input" id="input" type="text" style="display: block; width: 100%; border-width: 1px 0 1px 0;"
              autofocus/>
