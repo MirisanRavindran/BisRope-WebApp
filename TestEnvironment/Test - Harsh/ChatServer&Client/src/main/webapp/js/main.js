@@ -105,6 +105,7 @@ function newRoom(){
                     messageContainer.appendChild(el);
                 }
                 else if (message.type === "image") {
+                    console.log(message)
                     el.setAttribute("class", "image-container")
                     el.innerHTML = `
                         <div>
@@ -165,6 +166,7 @@ function enterRoom(code) {
             messageContainer.appendChild(el);
         }
         else if (message.type === "image") {
+            console.log(message)
             el.setAttribute("class", "image-container")
             el.innerHTML = `
                     <div>
@@ -205,20 +207,9 @@ function SendImage(event) {
 
         reader.addEventListener("load", function(){
                 let message = reader.result;
-                let sender = message;
-                message = `<img src='${message}' class="img-fluid"/>`;
-                let messageContainer = document.querySelector(".textArea");
-                let el = document.createElement("div");
-                el.setAttribute("class", "image-container")
-                el.innerHTML = `
-                        <div>
-                            <img ${message} 
-                        </div>
-                    `;
-                messageContainer.appendChild(el);
-
-                let request = {"type":"image", "msg": sender};
+                let request = {"type":"image", "msg": message};
                 ws.send(JSON.stringify(request));
+
                 //document.getElementById("image").innerHTML += "[" + timestamp() + "] " + message + "\n";
             }
             , false);
