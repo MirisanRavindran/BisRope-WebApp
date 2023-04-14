@@ -9,20 +9,20 @@ public class BisropeServers {
     private static HashMap<String,Server> activeServers = new HashMap<>();
     private static HashSet<String> usedCodes = new HashSet<>();
 
-    public void createServer(String name){
+    public String createServer(String name){
         String id = generatingRandomUpperAlphanumericString();
         String firstRoom = generatingRandomUpperAlphanumericString();
         Server server = new Server();
         server.setName(name);
         server.setID(id);
         server.addRoomCodes(firstRoom);
-
         activeServers.put(id,server);
+        return id;
     }
     public Server getServer(String code){
         return activeServers.get(code);
     }
-    private String generatingRandomUpperAlphanumericString() {
+    public String generatingRandomUpperAlphanumericString() {
         String generatedString = RandomStringUtils.randomAlphanumeric(5).toUpperCase();
         // generating unique room code
         while (usedCodes.contains(generatedString)) {
@@ -31,14 +31,14 @@ public class BisropeServers {
         usedCodes.add(generatedString);
         return generatedString;
     }
-    public void joinServer(String user, String code){
+    public void joinServer(String code, String user){
         activeServers.get(code).addUsers(user);
     }
 
     public void addRoomToServer(String code) {
         activeServers.get(code).addRoomCodes(code);
     }
-    public boolean isRoom(String code){
+    public boolean isServer(String code){
         if(activeServers.containsKey(code)){return true;}
 
         else{return false;}
