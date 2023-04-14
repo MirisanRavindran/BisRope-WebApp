@@ -78,11 +78,45 @@ function newRoom(){
                 console.log(event.data);
                 // Parse the incoming message and append it to the chat log on the web page
                 let message = JSON.parse(event.data);
-                document.getElementById("log").textContent += "[" + timestamp() + "] " + message.message + "\n";
+                console.log(message.type === "chat");
+                // document.getElementById("log").value += "[" + timestamp() + "] " + message.message + "\n";
+                let messageContainer = document.querySelector(".textArea");
+                let el = document.createElement("div");
+                if (message.type === "chat")
+                {
+                    el.setAttribute("class", "text-bubble")
+                    el.innerHTML = `
+                        <div class="Messages">
+                            <div>
+                                <p id="log">${message.message}</p>
+                            </div>
+                        </div>
+                    `;
+                    messageContainer.appendChild(el);
+                }
+                else if (message.type === "Server")
+                {
+                    el.setAttribute("class", "Message")
+                    el.innerHTML = `
+                        <div>
+                            <h3 id="ServerMessage">${message.message}</h3>
+                        </div>
+                    `;
+                    messageContainer.appendChild(el);
+                }
+                else if (message.type === "image") {
+                    el.setAttribute("class", "image-container")
+                    el.innerHTML = `
+                        <div>
+                            <img src='${message.message}' class="img-fluid"/>
+                        </div>
+                    `;
+                    messageContainer.appendChild(el);
+                }
             }
-            document.getElementById("input").addEventListener("keyup", function (event) {
+            document.getElementById("inputText").addEventListener("keyup", function (event) {
                 if (event.keyCode === 13) {
-                    let request = {"type":"chat", "msg":event.target.textContent};
+                    let request = {"type":"chat", "msg":event.target.value};
                     ws.send(JSON.stringify(request));
                     event.target.value = "";
                 }
@@ -95,24 +129,67 @@ function newRoom(){
 
 }
 function enterRoom(code) {
-    const url = 'http://localhost:8080/GetRoomList-1.0-SNAPSHOT/api/rooms';
+    const url = 'http://localhost:8080/GetRoomList-1.0-SNAPSHOT/api/rooms/random';
     const body = code;
 
     ws = new WebSocket("ws://localhost:8080/WSChatServer-1.0-SNAPSHOT/ws/" + code);
 
+
     ws.onmessage = function (event) {
         console.log(event.data);
         let message = JSON.parse(event.data);
-        document.getElementById("log").textContent += "[" + timestamp() + "] " + message.message + "\n";
+        // document.getElementById("log").value += "[" + timestamp() + "] " + message.message + "\n";
+        console.log(message.type === "Server");
+        let messageContainer = document.querySelector(".textArea");
+        let el = document.createElement("div");
+        if (message.type === "chat")
+        {
+            el.setAttribute("class", "text-bubble")
+            el.innerHTML = `
+                        <div class="Messages">
+                            <div>
+                                <p id="log">${message.message}</p>
+                            </div>
+                        </div>
+                    `;
+            messageContainer.appendChild(el);
+        }
+        else if (message.type === "Server")
+        {
+            el.setAttribute("class", "Message")
+            el.innerHTML = `
+                        <div>
+                            <h3 id="ServerMessage">${message.message}</h3>
+                        </div>
+                    `;
+            messageContainer.appendChild(el);
+        }
+        else if (message.type === "image") {
+            el.setAttribute("class", "image-container")
+            el.innerHTML = `
+                    <div>
+                        <img src='${message.message}' class="img-fluid"/>
+                    </div>
+                   `;
+            messageContainer.appendChild(el);
+        }
+
     }
-    document.getElementById("input").addEventListener("keyup", function (event) {
+    document.getElementById("inputText").addEventListener("keyup", function (event) {
         if (event.keyCode === 13) {
-            let request = {"type":"chat", "msg":event.target.textContent};
+            let request = {"type":"chat", "msg":event.target.value};
             ws.send(JSON.stringify(request));
-            event.target.textContent = "";
+            event.target.value = "";
         }
     });
 }
+
+function timestamp() {
+    var d = new Date(), minutes = d.getMinutes();
+    if (minutes < 10) minutes = '0' + minutes;
+    return d.getHours() + ':' + minutes;
+}
+
 
 function ChooseImage() {
     document.getElementById('imageFile').click();
@@ -128,16 +205,49 @@ function SendImage(event) {
 
         reader.addEventListener("load", function(){
                 let message = reader.result;
+                let sender = message;
                 message = `<img src='${message}' class="img-fluid"/>`;
-                document.getElementById("log").innerHTML += "[" + timestamp() + "] " + message + "\n";
+                let messageContainer = document.querySelector(".textArea");
+                let el = document.createElement("div");
+                el.setAttribute("class", "image-container")
+                el.innerHTML = `
+                        <div>
+                            <img ${message} 
+                        </div>
+                    `;
+                messageContainer.appendChild(el);
+
+                let request = {"type":"image", "msg": sender};
+                ws.send(JSON.stringify(request));
+                //document.getElementById("image").innerHTML += "[" + timestamp() + "] " + message + "\n";
             }
             , false);
-
         if (file) {
             reader.readAsDataURL(file);
         }
     }
 }
+
+const container = document.querySelector('.ChatSpace');
+
+container.addEventListener('wheel', (e) => {
+    e.preventDefault();
+    container.scrollBy(0, e.deltaY);
+
+    const scrollHeight = container.scrollHeight;
+    const height = container.clientHeight;
+    const maxScrollTop = scrollHeight - height;
+    const currentScrollTop = container.scrollTop;
+
+    if (currentScrollTop === maxScrollTop && e.deltaY > 0) {
+        e.preventDefault();
+    }
+
+    if (currentScrollTop === 0 && e.deltaY < 0) {
+        e.preventDefault();
+    }
+});
+
 
 function showEmojiPanel() {
     document.getElementById("emoji")
@@ -150,8 +260,4 @@ function hideEmojiPanel() {
 function getEmoji(control) {
     document.getElementById("log").innerHTML += control.textContent;
 }
-function timestamp() {
-    var d = new Date(), minutes = d.getMinutes();
-    if (minutes < 10) minutes = '0' + minutes;
-    return d.getHours() + ':' + minutes;
-}
+
