@@ -20,15 +20,12 @@ public class BisropeResource {
     @Produces("text/plain")
     @Path("/create-account/{username}/{password}")
     public Response createAccount(@PathParam("username") String username, @PathParam("password") String password) throws Exception {
-        // Check if email is already in use
         if (users.isUser(username)) {
             return Response.status(401).entity("Username already in use.").build();
         }
     
-        // Create new user
         users.createUser(username, password);
     
-        // Return success response
         return Response.ok("User created successfully.").build();
     }
 
@@ -36,12 +33,11 @@ public class BisropeResource {
     @Path("/login/{username}/{password}")
     @Produces("text/plain")
     public Response login(@PathParam("username") String username, @PathParam("password") String password) {
-        // Check if user exists and password is correct
+
         if (!users.isPassword(username, password)) {
             return Response.status(401).entity("Invalid username or password.").build();
         }
 
-        // User exists and password is correct, return user information
         return Response.ok(username).build();
     }
 
@@ -49,10 +45,8 @@ public class BisropeResource {
     @Path("/create-server/{server-name}/{username}")
     @Produces("text/plain")
     public Response createServer(@PathParam("server-name") String name, @PathParam("username") String username) {
-        // Create a new server with the given name
         String id = servers.createServer(name);
         users.getUser(username).addServer(id);
-        // Return the server ID in the response body
         return Response.ok(id).build();
     }
 
