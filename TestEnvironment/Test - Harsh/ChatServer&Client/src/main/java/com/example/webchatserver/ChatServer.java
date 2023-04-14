@@ -6,7 +6,11 @@ import jakarta.websocket.server.ServerEndpoint;
 import org.json.JSONObject;
 
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.nio.ByteBuffer;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -21,7 +25,7 @@ public class ChatServer {
         roomList.put(session.getId(), roomID); // adding userID to a room
         System.out.println("Room joined ");
 
-        session.getBasicRemote().sendText("{\"type\": \"chat\", \"message\":\"(Server ): Welcome to the chat room. Please state your username to begin.\"}");
+        session.getBasicRemote().sendText("{\"type\": \"Server\", \"message\":\"(Server ): Welcome to the chat room. Please state your username to begin.\"}");
     }
 
     @OnClose
@@ -39,7 +43,7 @@ public class ChatServer {
             int countPeers = 0;
             for (Session peer : session.getOpenSessions()){ //broadcast this person left the server
                 if(roomList.get(peer.getId()).equals(roomID)) { // broadcast only to those in the same room
-                    peer.getBasicRemote().sendText("{\"type\": \"chat\", \"message\":\"(Server): " + username + " left the chat room.\"}");
+                    peer.getBasicRemote().sendText("{\"type\": \"Server\", \"message\":\"(Server): " + username + " left the chat room.\"}");
                     countPeers++; // count how many peers are left in the room
                 }
             }
@@ -56,35 +60,45 @@ public class ChatServer {
         String type = (String) jsonmsg.get("type");
         String message = (String) jsonmsg.get("msg");
 
-        if(usernames.containsKey(userID)){ // not their first message
-            String username = usernames.get(userID);
-            System.out.println(username);
+        if (type.equals("chat")) { // handle chat message
+            if (usernames.containsKey(userID)) { // not their first message
+                String username = usernames.get(userID);
+                System.out.println(username);
 
+                // broadcasting it to peers in the same room
+                for (Session peer : session.getOpenSessions()) {
+                    // only send my messages to those in the same room
+                    if (roomList.get(peer.getId()).equals(roomID)) {
+                        peer.getBasicRemote().sendText("{\"type\": \"chat\", \"message\":\"(" + username + "): " + message + "\"}");
+                    }
+                }
+            } else { // first message is their username
+                usernames.put(userID, message);
+                session.getBasicRemote().sendText("{\"type\": \"Server\", \"message\":\"(Server ): Welcome, " + message + "!\"}");
 
-            // broadcasting it to peers in the same room
-            for(Session peer: session.getOpenSessions()){
-                // only send my messages to those in the same room
-                if(roomList.get(peer.getId()).equals(roomID)) {
-                    peer.getBasicRemote().sendText("{\"type\": \"chat\", \"message\":\"(" + username + "): " + message + "\"}");
+                // broadcasting it to peers in the same room
+                for (Session peer : session.getOpenSessions()) {
+                    // only announce to those in the same room as me, excluding myself
+                    if ((!peer.getId().equals(userID)) && (roomList.get(peer.getId()).equals(roomID))) {
+                        peer.getBasicRemote().sendText("{\"type\": \"Server\", \"message\":\"(Server): " + message + " joined the chat room.\"}");
+                    }
                 }
             }
-        }else{ //first message is their username
-            usernames.put(userID, message);
-            session.getBasicRemote().sendText("{\"type\": \"chat\", \"message\":\"(Server ): Welcome, " + message + "!\"}");
+        } else if (type.equals("image")) { // handle image message
+            if (usernames.containsKey(userID)) {
+                String username = usernames.get(userID);
+                System.out.println(username);
 
-
-            // broadcasting it to peers in the same room
-            for(Session peer: session.getOpenSessions()){
-                // only announce to those in the same room as me, excluding myself
-                if((!peer.getId().equals(userID)) && (roomList.get(peer.getId()).equals(roomID))){
-                    peer.getBasicRemote().sendText("{\"type\": \"chat\", \"message\":\"(Server): " + message + " joined the chat room.\"}");
+                // broadcasting it to peers in the same room
+                for (Session peer : session.getOpenSessions()) {
+                    // only send my messages to those in the same room
+                    if (roomList.get(peer.getId()).equals(roomID)) {
+                        peer.getBasicRemote().sendText("{\"type\": \"image\", \"message\":\"(" + username + "): " + message + "\"}");
+                    }
                 }
+            } else {
+                // do nothing, as an image message cannot be the first message
             }
         }
-
     }
-
-
-
-
 }
