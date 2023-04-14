@@ -71,7 +71,7 @@ function newRoom(){
         })
         .then(data => {
             // If the response was successful, create a new WebSocket connection to the chat server
-            ws = new WebSocket("ws://localhost:8080/WSChatServerDemo-1.0-SNAPSHOT/ws/" + data);
+            ws = new WebSocket("ws://localhost:8080/WSChatServer-1.0-SNAPSHOT/ws/" + data);
 
             // Set up an event listener for incoming messages
             ws.onmessage = function (event) {
@@ -86,8 +86,10 @@ function newRoom(){
                 {
                     el.setAttribute("class", "text-bubble")
                     el.innerHTML = `
-                        <div>
-                            <p id="log">${message.message}</p>
+                        <div class="Messages">
+                            <div>
+                                <p id="log">${message.message}</p>
+                            </div>
                         </div>
                     `;
                     messageContainer.appendChild(el);
@@ -118,10 +120,10 @@ function newRoom(){
 
 }
 function enterRoom(code) {
-    const url = 'http://localhost:8080/GetRoomList-1.0-SNAPSHOT/api/rooms';
+    const url = 'http://localhost:8080/GetRoomList-1.0-SNAPSHOT/api/rooms/random';
     const body = code;
 
-    ws = new WebSocket("ws://localhost:8080/WSChatServerDemo-1.0-SNAPSHOT/ws/" + code);
+    ws = new WebSocket("ws://localhost:8080/WSChatServer-1.0-SNAPSHOT/ws/" + code);
 
     ws.onmessage = function (event) {
         console.log(event.data);
@@ -134,13 +136,15 @@ function enterRoom(code) {
         {
             el.setAttribute("class", "text-bubble")
             el.innerHTML = `
-                        <div>
-                            <p id="log">${message.message}</p>
+                        <div class="Messages">
+                            <div>
+                                <p id="log">${message.message}</p>
+                            </div>
                         </div>
                     `;
             messageContainer.appendChild(el);
         }
-        else if (message.type === "server")
+        else if (message.type === "Server")
         {
             el.setAttribute("class", "Message")
             el.innerHTML = `
@@ -183,7 +187,16 @@ function SendImage(event) {
         reader.addEventListener("load", function(){
                 let message = reader.result;
                 message = `<img src='${message}' class="img-fluid"/>`;
-                document.getElementById("image").innerHTML += "[" + timestamp() + "] " + message + "\n";
+                let messageContainer = document.querySelector(".textArea");
+                let el = document.createElement("div");
+                el.setAttribute("class", "image-container")
+                el.innerHTML = `
+                        <div>
+                            <img ${message} 
+                        </div>
+                    `;
+                messageContainer.appendChild(el);
+                //document.getElementById("image").innerHTML += "[" + timestamp() + "] " + message + "\n";
             }
             , false);
         if (file) {
@@ -191,5 +204,26 @@ function SendImage(event) {
         }
     }
 }
+
+const container = document.querySelector('.ChatSpace');
+
+container.addEventListener('wheel', (e) => {
+    e.preventDefault();
+    container.scrollBy(0, e.deltaY);
+
+    const scrollHeight = container.scrollHeight;
+    const height = container.clientHeight;
+    const maxScrollTop = scrollHeight - height;
+    const currentScrollTop = container.scrollTop;
+
+    if (currentScrollTop === maxScrollTop && e.deltaY > 0) {
+        e.preventDefault();
+    }
+
+    if (currentScrollTop === 0 && e.deltaY < 0) {
+        e.preventDefault();
+    }
+});
+
 
 
