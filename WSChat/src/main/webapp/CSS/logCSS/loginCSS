@@ -1,3 +1,214 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900");
+
+
+
+* {
+    padding: 0px;
+    boxing-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+/*
+    This section defines the CSS styling for the body in general
+*/
+body {
+    font-family: "Roboto", sans-serif;
+    height: 100vh;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    background: linear-gradient(to bottom right, #F06292, #26A69A, #b779ca);
+    background-size: 200% 200%;
+
+    /*Defining the animations that will apply to the body (will be seen on each page)*/
+    animation: gradient 1s ease-in-out infinite;
+    animation: fadeIn ease 0.5s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+  }
+
+    /*Defining the animation where the homepage fades into the screen when first accessed*/
+    @keyframes fadeIn {
+        0% {
+        opacity:0;
+        }
+        100% {
+        opacity:1;
+        }
+    }
+  
+    /*Defining the animation where the background of the body changes from one color to another*/
+    @keyframes gradient {
+        0% {
+        background-position: 0% 50%;
+        }
+        50% {
+        background-position: 100% 50%;
+        }
+        100% {
+        background-position: 0% 50%;
+        }
+    }
+
+
+.logo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+/*Styling for the chatroom list being displayed*/
+
+
+.chat-list-title
+{
+    background: #3F51B5;
+    position: relative;
+    height: 50px;
+    top: -2.2%;
+    width: 162px;
+    left: -5%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0px 30px;
+    font-size: 18px;
+    color: #eee;
+    font-weight: 600;
+    border-radius: 20px;
+
+}
+
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.chat-list
+{
+    float: right;
+    position: fixed;
+    left: 50px;
+    top: 100px;
+    width: 200px;
+    padding: 10px;
+    height: 825px;
+    background-color: #CE93D8;
+    margin-right: 30px;
+    border-radius: 20px;
+
+}
+
+.chat-list:hover{
+    transform: translate(0px,-10px);
+    transition: all 0.25s ease-in-out;
+    box-shadow: 5px 5px 5px #E3F2FD;
+}
+
+/*Styling for the server list being displayed*/
+
+.server-list-title
+{
+    background: #64B5F6;
+    position: relative;
+    height: 50px;
+    top: -2.2%;
+    width: 160px;
+    left: -5%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0px 30px;
+    font-size: 18px;
+    color: #eee;
+    font-weight: 600;
+    border-radius: 20px;
+
+}
+
+.server-list
+{
+    float: left;
+    position: fixed;
+    left: 1650px;
+    top:100px;
+    width: 200px;
+    padding: 10px;
+    height: 825px;
+    background-color: #5E35B1;
+    margin-right: 30px;
+    border-radius: 20px;
+
+}
+
+.server-list:hover{
+    transform: translate(0px,-10px);
+    transition: all 0.25s ease-in-out;
+    box-shadow: 5px 5px 5px #E3F2FD;
+}
+
+
+.dmButton{
+    position: fixed;
+    left: 100px;
+    top: 100px;
+ 
+    background-color: transparent;
+}
+
+.plusButton{
+    position: fixed;
+    left: 1660px;
+    top: 885px;
+    
+    border-radius: 15px;
+    background-color: #222e3a;
+}
+
+.plusButton1{
+    position: fixed;
+    top: 885px;
+    left: 60px;
+    
+    border-radius: 15px;
+    background-color: #222e3a;
+}
+
+.serverMessage {
+    position: fixed;
+    left: 1705px;
+    top: 870px;
+    padding: 10px;
+    background-color: transparent;
+    margin-right: 30px;
+    border-radius: 20px;
+}
+
+.DMMessage {
+    position: fixed;
+    left: 110px;
+    top: 870px;
+    padding: 10px;
+    background-color: transparent;
+    margin-right: 30px;
+    border-radius: 20px;
+}
+
+.notification-title {
+    position: fixed;
+    left: 650px;
+    top: 300px;
+    padding: 10px;
+    background-color: transparent;
+    margin-right: 30px;
+    border-radius: 20px;
+}
+
+
 body {
     font-family: "Roboto", sans-serif;
     height: 100vh;
