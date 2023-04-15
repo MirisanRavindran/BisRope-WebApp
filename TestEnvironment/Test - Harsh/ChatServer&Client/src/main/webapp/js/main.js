@@ -239,15 +239,7 @@ container.addEventListener('wheel', (e) => {
 });
 
 
-function showEmojiPanel() {
-    document.getElementById("emoji")
-}
-
-function hideEmojiPanel() {
-    document.getElementById("emoji").setAttribute("style", "display:none;");
-}
-
-function getEmoji(control) {
-    document.getElementById("log").innerHTML += control.textContent;
+function getEmoji(code) {
+    document.getElementById("inputText").value += code.textContent;
 }
 
