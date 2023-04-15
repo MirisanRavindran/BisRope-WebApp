@@ -10,7 +10,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="002175e1-637d-472a-a954-c12e192adba4" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../../Test - Harsh/ChatServer&amp;Client/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Test - Harsh/ChatServer&amp;Client/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../WSChat/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../WSChat/.idea/jsLibraryMappings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../WSChat/src/main/webapp/CSS/logCSS/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../WSChat/src/main/webapp/JS/loginJS.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../../WSChat/src/main/webapp/JS/loginJS.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../WSChat/src/main/webapp/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../../WSChat/src/main/webapp/login.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,7 +50,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/temp/SecondYear-SecondSemester/2020u/New-Final-Project/w23-csci2020u-project-team19/TestEnvironment/Test - Harsh/ChatServer&Client",
+    "last_opened_file_path": "C:/temp/SecondYear-SecondSemester/2020u/New-Final-Project/w23-csci2020u-project-team19/WSChat",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -113,7 +117,7 @@
       <workItem from="1681196203627" duration="860000" />
       <workItem from="1681405159093" duration="169000" />
       <workItem from="1681441951902" duration="182000" />
-      <workItem from="1681512735233" duration="11740000" />
+      <workItem from="1681512735233" duration="18241000" />
     </task>
     <servers />
   </component>
