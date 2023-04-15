@@ -46,7 +46,9 @@ function logIn(){
                 // If the response status is "ok", return the response text
                 console.log(response.text);
                 alert("Login successful");
-                window.location.href = "http://localhost:8080/WSChat/chat.html";
+                localStorage.setItem("username", username);
+                console.log(localStorage.getItem("username"));
+                window.location.href = "homepage.html";
             }
             if (response.status === 401){
                 console.log("Username or password is incorrect. Please try again.");
@@ -57,8 +59,9 @@ function logIn(){
         })
 
     //pass the username variable to the homepageJS file
-    localStorage.setItem("username", username);
-    console.log(localStorage.getItem("username"));
+
+    
+    
 
         
 }
