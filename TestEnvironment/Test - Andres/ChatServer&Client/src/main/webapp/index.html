@@ -73,7 +73,7 @@
         </div>
       </div>
       <div class="inputArea">
-        <input autocomplete="off" title="Chat Input" placeholder="Message" id="inputText" type="text" autofocus/>
+        <input autocomplete="off" title="Chat Input" placeholder="Message" id="inputText" onfocus="hideEmojiPanel()" type="text" autofocus/>
       </div>
     </div>
 
@@ -107,23 +107,21 @@
       <input type="file" id="imageFile" onchange="SendImage(this);" accept="image/*" style="display: none"/>
     </a>
   </div>
-  <div class="emoji-container">
-    <img class = "img-frame" src="Emoji-Face.png" onclick="runFunction1()" alt="Image 1">
-    <img class = "img-frame" src="Emoji-Face.png" onclick="runFunction2()" alt="Image 2">
-    <img class = "img-frame" src="Emoji-Face.png" onclick="runFunction3()" alt="Image 3">
-    <img class = "img-frame" src="Emoji-Face.png" onclick="runFunction4()" alt="Image 4">
-    <img class = "img-frame" src="Emoji-Face.png" onclick="runFunction5()" alt="Image 5">
-    <img class = "img-frame" src="Emoji-Face.png" onclick="runFunction6()" alt="Image 6">
-    <img class = "img-frame" src="Emoji-Face.png" onclick="runFunction7()" alt="Image 7">
-    <img class = "img-frame" src="Emoji-Face.png" onclick="runFunction8()" alt="Image 8">
-    <img class = "img-frame" src="Emoji-Face.png" onclick="runFunction9()" alt="Image 9">
-    <img class = "img-frame" src="Emoji-Face.png" onclick="runFunction10()" alt="Image 10">
+  <div>
+    <a onclick="showEmojiPanel()">&#128512;</a>
   </div>
-
-
-
-
-
+  <div class="emoji-container">
+    <a onclick="getEmoji(this)">&#128557;</a>
+    <a onclick="getEmoji(this)">&#128526;</a>
+    <a onclick="getEmoji(this)">&#128512;</a>
+    <a onclick="getEmoji(this)">&#128514;</a>
+    <a onclick="getEmoji(this)">&#129313;</a>
+    <a onclick="getEmoji(this)">&#129299;</a>
+    <a onclick="getEmoji(this)">&#128151;</a>
+    <a onclick="getEmoji(this)">&#128077;</a>
+    <a onclick="getEmoji(this)">&#129324;</a>
+    <a onclick="getEmoji(this)">&#128564;</a>
+  </div>
 
   <!--The about page, which contains information about the team-->
 

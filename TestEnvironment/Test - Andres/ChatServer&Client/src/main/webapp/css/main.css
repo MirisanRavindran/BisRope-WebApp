@@ -31,20 +31,30 @@
 .text-bubble {
     display: flex;
     padding: 10px;
+    justify-content: flex-start;
 }
+
+.text-bubble-other {
+    display: flex;
+    padding: 10px;
+    justify-content: flex-end;
+}
+
+
 
 .text-bubble  > div{
     max-width: 60%;
     background-color: #3F51B5;
     padding: 10px;
     border-radius: 20px;
-}
 
+}
 .text-bubble p{
     margin: 0;
     padding: 0;
     font-size: 16px;
     color: white;
+
 }
 
 .textArea
@@ -61,7 +71,6 @@
     color: white;
     padding-top: 20px;
     font-weight: 500;
-    align-items: flex-start;
 }
 
 .inputArea
@@ -94,7 +103,6 @@
     max-width: 100%;
     height: auto;
     margin-bottom: 20px;
-
 }
 
 #ServerMessage

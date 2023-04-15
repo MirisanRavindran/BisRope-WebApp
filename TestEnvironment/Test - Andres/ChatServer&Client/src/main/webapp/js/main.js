@@ -79,6 +79,7 @@ function newRoom(){
                 // Parse the incoming message and append it to the chat log on the web page
                 let message = JSON.parse(event.data);
                 console.log(message.type === "chat");
+                let time = timestamp();
                 // document.getElementById("log").value += "[" + timestamp() + "] " + message.message + "\n";
                 let messageContainer = document.querySelector(".textArea");
                 let el = document.createElement("div");
@@ -88,7 +89,7 @@ function newRoom(){
                     el.innerHTML = `
                         <div class="Message">
                             <div>
-                                <div><p>${message.message}</p><div>
+                                <div><p>[${time}]${message.message}</p><div>
                             </div>
                         </div>
                     `;
@@ -109,7 +110,17 @@ function newRoom(){
                     el.setAttribute("class", "image-container")
                     el.innerHTML = `
                         <div>
-                            <img src='${message.message}' class="img-fluid"/>
+                            [${time}]<img src='${message.message}' class="img-fluid"/>
+                        </div>
+                    `;
+                    messageContainer.appendChild(el);
+                }
+                else if (message.type === "other")
+                {
+                    el.setAttribute("class", "Message")
+                    el.innerHTML = `
+                        <div>
+                            <h3 id="ServerMessage">${message.message}</h3>
                         </div>
                     `;
                     messageContainer.appendChild(el);
@@ -142,13 +153,14 @@ function enterRoom(code) {
         console.log(message.type === "Server");
         let messageContainer = document.querySelector(".textArea");
         let el = document.createElement("div");
+        let time = timestamp();
         if (message.type === "chat")
         {
             el.setAttribute("class", "text-bubble")
             el.innerHTML = `
                         <div class="Message">
                             <div>
-                                <div><p>${message.message}</p><div>
+                                <div><p>[${time}]${message.message}</p><div>
                             </div>
                         </div>
                     `;
@@ -169,7 +181,19 @@ function enterRoom(code) {
             el.setAttribute("class", "image-container")
             el.innerHTML = `
                         <div>
-                            <img src='${message.message}' class="img-fluid"/>
+                            [${time}]<img src='${message.message}' class="img-fluid"/>
+                        </div>
+                    `;
+            messageContainer.appendChild(el);
+        }
+        else if (message.type === "other")
+        {
+            el.setAttribute("class", "text-bubble-other")
+            el.innerHTML = `
+                        <div class="Message">
+                            <div>
+                                <div><p>${message.message}[${time}]</p><div>
+                            </div>
                         </div>
                     `;
             messageContainer.appendChild(el);
@@ -238,18 +262,16 @@ container.addEventListener('wheel', (e) => {
     }
 });
 
-
 function showEmojiPanel() {
-    document.getElementById("emoji")
+    document.querySelector(".emoji-container").removeAttribute("style");
 }
-
 function hideEmojiPanel() {
-    document.getElementById("emoji").setAttribute("style", "display:none;");
+    document.querySelector(".emoji-container").setAttribute("style", "display:none;");
+}
+function getEmoji(code) {
+    document.getElementById("inputText").value += code.textContent;
 }
 
-function getEmoji(control) {
-    document.getElementById("log").innerHTML += control.textContent;
-}
 
 
 
