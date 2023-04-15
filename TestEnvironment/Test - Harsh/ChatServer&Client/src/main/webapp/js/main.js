@@ -86,9 +86,9 @@ function newRoom(){
                 {
                     el.setAttribute("class", "text-bubble")
                     el.innerHTML = `
-                        <div class="Messages">
+                        <div class="Message">
                             <div>
-                                <p id="log">${message.message}</p>
+                                <div><p>${message.message}</p><div>
                             </div>
                         </div>
                     `;
@@ -135,7 +135,6 @@ function enterRoom(code) {
 
     ws = new WebSocket("ws://localhost:8080/WSChatServer-1.0-SNAPSHOT/ws/" + code);
 
-
     ws.onmessage = function (event) {
         console.log(event.data);
         let message = JSON.parse(event.data);
@@ -147,9 +146,9 @@ function enterRoom(code) {
         {
             el.setAttribute("class", "text-bubble")
             el.innerHTML = `
-                        <div class="Messages">
+                        <div class="Message">
                             <div>
-                                <p id="log">${message.message}</p>
+                                <div><p>${message.message}</p><div>
                             </div>
                         </div>
                     `;
@@ -169,10 +168,10 @@ function enterRoom(code) {
             console.log(message)
             el.setAttribute("class", "image-container")
             el.innerHTML = `
-                    <div>
-                        <img src='${message.message}' class="img-fluid"/>
-                    </div>
-                   `;
+                        <div>
+                            <img src='${message.message}' class="img-fluid"/>
+                        </div>
+                    `;
             messageContainer.appendChild(el);
         }
 
