@@ -14,7 +14,7 @@ function createNewServer(){
             if (response.ok) {
                 // If the response status is "ok", return the response text
                 console.log(response.text);
-                //updateServerList();
+                updateServerList();
             }
             // if (response.status === 401){
             //     console.log("Server name already exists. Please try again.");
@@ -64,14 +64,25 @@ function updateServerList(){
             throw new Error('Network response was not ok.');
         })
         .then(data => {
-            var serverList = JSON.parse(data);
-            var serverListElement = document.getElementById("serverList");
+            serverArray = data.slice(1, -1).split(", ");
+            console.log(roomArray);
+            var serverListElement = document.getElementById("serverTable");
             serverListElement.innerHTML = "";
-            for (var i = 0; i < serverList.length; i++) {
-                var server = serverList[i];
-                var serverElement = document.createElement("li");
-                serverElement.innerHTML = server;
-                serverListElement.appendChild(serverElement);
+            for (let i = 0; i < roomArray.length; i++) {
+                // Create a new row in the chat room list table
+                const row = table.insertRow();
+                // Create a new cell in the row and add a link to the chat room
+                const cell = row.insertCell();
+                const linkText = document.createTextNode(roomArray[i]);
+                const link = document.createElement("a");
+                link.appendChild(linkText);
+                link.href = "#"; // Set href to # so that the link doesn't redirect the page
+                // When the link is clicked, call the enterRoom() function for the selected chat room
+                link.onclick = function() {
+                    joinSelectedServer(roomArray[i]);
+                    return false; // Prevent the link from redirecting the page
+                }
+                cell.appendChild(link);
             }
         })
 
