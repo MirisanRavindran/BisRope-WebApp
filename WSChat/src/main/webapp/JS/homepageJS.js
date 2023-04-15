@@ -4,6 +4,8 @@
 function createNewServer(){
     var servername = document.getElementById("serverName").value;
     var username = localStorage.getItem("username");
+    console.log(servername);
+    console.log(username);
     const url = "http://localhost:8080/BisRopeServer-1.0-SNAPSHOT/api/bisrope-server/create-server/"+ servername +"/" + username;
     fetch(url, {
         method: 'GET',
@@ -12,7 +14,7 @@ function createNewServer(){
             if (response.ok) {
                 // If the response status is "ok", return the response text
                 console.log(response.text);
-                updateServerList();
+                //updateServerList();
             }
             // if (response.status === 401){
             //     console.log("Server name already exists. Please try again.");

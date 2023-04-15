@@ -17,7 +17,6 @@ function createUser() {
             if (response.ok) {
                 // If the response status is "ok", return the response text
                 console.log(response.text);
-                alert("Account created successfully");
             }
             if (response.status === 401){
                 console.log("Username already exists. Please try again.");
