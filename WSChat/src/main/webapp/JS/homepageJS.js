@@ -51,7 +51,7 @@ function addExistingServer(){
 function updateServerList(){
     var username = localStorage.getItem("username");
     
-    const url = "http://localhost:8080/BisRopeServer-1.0-SNAPSHOT/api/bisrope-server/get-server-list" + username;
+    const url = "http://localhost:8080/BisRopeServer-1.0-SNAPSHOT/api/bisrope-server/get-server-list/" + username;
     fetch(url, {
         method: 'GET',
     })
@@ -64,32 +64,29 @@ function updateServerList(){
             throw new Error('Network response was not ok.');
         })
         .then(data => {
-            const table = document.getElementById("serverTable");
+            const table = document.getElementById("serverListTable");
             serverArray = data.slice(1, -1).split(", ");
-            console.log(roomArray);
-            serverListElement.innerHTML = "";
-            for (let i = 0; i < roomArray.length; i++) {
+            console.log(serverArray);
+            while (table.rows.length > 0) {
+                table.deleteRow(0);
+            }
+            for (let i = 0; i < serverArray.length; i++) {
                 // Create a new row in the chat room list table
                 const row = table.insertRow();
                 // Create a new cell in the row and add a link to the chat room
                 const cell = row.insertCell();
-                const linkText = document.createTextNode(roomArray[i]);
+                const linkText = document.createTextNode(serverArray[i]);
                 const link = document.createElement("a");
                 link.appendChild(linkText);
                 link.href = "#"; // Set href to # so that the link doesn't redirect the page
                 // When the link is clicked, call the enterRoom() function for the selected chat room
                 link.onclick = function() {
-                    joinSelectedServer(roomArray[i]);
+                    joinSelectedServer(serverArray[i]);
                     return false; // Prevent the link from redirecting the page
                 }
                 cell.appendChild(link);
             }
         })
-
-        let rooms = document.getElementById("servers"); //get the list of chat rooms
-        let li = document.createElement("<li>"); //create a new list item
-        li.innerHTML = response; //set the list item's text to the room code
-        rooms.appendChild(li); //add the list item to the list of chat rooms
 }
 
 //Function call to change page to the server listed
