@@ -16,6 +16,7 @@ function createUser() {
         .then(response => {
             if (response.ok) {
                 // If the response status is "ok", return the response text
+				alert("Account creation successful");
                 console.log(response.text);
             }
             if (response.status === 401){
@@ -44,7 +45,6 @@ function logIn(){
             if (response.ok) {
                 // If the response status is "ok", return the response text
                 console.log(response.text);
-                alert("Login successful");
                 localStorage.setItem("username", username);
                 console.log(localStorage.getItem("username"));
                 window.location.href = "homepage.html";

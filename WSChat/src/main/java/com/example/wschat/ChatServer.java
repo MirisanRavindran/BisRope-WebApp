@@ -33,12 +33,13 @@ public class ChatServer {
             roomList.remove(roomID);
             // broadcasting it to peers in the same room
             int countPeers = 0;
-            for (Session peer : session.getOpenSessions()){ //broadcast this person left the server
-                if(roomList.get(peer.getId()).equals(roomID)) { // broadcast only to those in the same room
+            for (Session peer : session.getOpenSessions()) { //broadcast this person left the server
+                if (roomList.get(peer.getId()).equals(roomID)) { // broadcast only to those in the same room
                     countPeers++; // count how many peers are left in the room
                 }
             }
         }
+    }
 
 
     @OnMessage

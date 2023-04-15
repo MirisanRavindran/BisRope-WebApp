@@ -17,7 +17,7 @@ public class BisropeResource {
     static BisropeServers servers = new BisropeServers();
 
 
-    @POST
+    @GET
     @Produces("text/plain")
     @Path("/create-account/{username}/{password}")
     public Response createAccount(@PathParam("username") String username, @PathParam("password") String password) throws Exception {
@@ -26,8 +26,12 @@ public class BisropeResource {
         }
     
         users.createUser(username, password);
-    
-        return Response.ok("User created successfully.").build();
+
+        return Response.status(200)
+                .header("Access-Control-Allow-Origin", "*")
+                .header("Content-Type", "text/plain")
+                .entity("user created successfully")
+                .build();
     }
 
     @GET
@@ -39,16 +43,24 @@ public class BisropeResource {
             return Response.status(401).entity("Invalid username or password.").build();
         }
 
-        return Response.ok(username).build();
+        return Response.status(200)
+                .header("Access-Control-Allow-Origin", "*")
+                .header("Content-Type", "text/plain")
+                .entity(username)
+                .build();
     }
 
-    @POST
+    @GET
     @Path("/create-server/{server-name}/{username}")
     @Produces("text/plain")
     public Response createServer(@PathParam("server-name") String name, @PathParam("username") String username) {
         String id = servers.createServer(name);
         users.getUser(username).addServer(id);
-        return Response.ok(id).build();
+        return Response.status(200)
+                .header("Access-Control-Allow-Origin", "*")
+                .header("Content-Type", "text/plain")
+                .entity(id)
+                .build();
     }
 
     @GET
@@ -56,10 +68,14 @@ public class BisropeResource {
     @Produces("text/plain")
     public Response getServerList(@PathParam("username") String username) {
         String list = users.getUser(username).getServerList().toString();
-        return Response.ok(list).build();
+        return Response.status(200)
+                .header("Access-Control-Allow-Origin", "*")
+                .header("Content-Type", "text/plain")
+                .entity(list)
+                .build();
     }
 
-    @POST
+    @GET
     @Path("/join-server/{server-id}/{username}")
     public Response joinServer(@PathParam("server-id") String id, @PathParam("username") String username) {
         if(!servers.isServer(id)){
@@ -67,7 +83,7 @@ public class BisropeResource {
         }
         servers.joinServer(id, username);
         users.addServertoUser(id, username);
-        return Response.status(200).entity("Server Joined").build();
+        return Response.status(200).entity("Server Joined").header("Access-Control-Allow-Origin", "*").build();
     }
 
     @GET
@@ -75,7 +91,11 @@ public class BisropeResource {
     @Produces("text/plain")
     public Response getServerRooms(@PathParam("server-id") String id) {
         String list = servers.getServer(id).getRoomCodes().toString();
-        return Response.ok(list).build();
+        return Response.status(200)
+                .header("Access-Control-Allow-Origin", "*")
+                .header("Content-Type", "text/plain")
+                .entity(list)
+                .build();
     }
 
     @GET
@@ -83,7 +103,11 @@ public class BisropeResource {
     @Produces("text/plain")
     public Response getServerName(@PathParam("server-id") String id) {
         String name = servers.getServer(id).getName();
-        return Response.ok(name).build();
+        return Response.status(200)
+                .header("Access-Control-Allow-Origin", "*")
+                .header("Content-Type", "text/plain")
+                .entity(name)
+                .build();
     }
 
     @GET
@@ -91,10 +115,14 @@ public class BisropeResource {
     @Produces("text/plain")
     public Response getServerUsers(@PathParam("server-id") String id) {
         String list = servers.getServer(id).getUserList().toString();
-        return Response.ok(list).build();
+        return Response.status(200)
+                .header("Access-Control-Allow-Origin", "*")
+                .header("Content-Type", "text/plain")
+                .entity(list)
+                .build();
     }
 
-    @POST
+    @GET
     @Path("/add-room/{server-id}")
     public void addRoom(@PathParam("server-id") String id) {
         servers.getServer(id).addRoomCodes(servers.generatingRandomUpperAlphanumericString());
