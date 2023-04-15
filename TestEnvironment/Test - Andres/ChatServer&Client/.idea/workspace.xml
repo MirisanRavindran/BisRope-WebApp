@@ -9,13 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="002175e1-637d-472a-a954-c12e192adba4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../../../WSChat/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../WSChat/.idea/jsLibraryMappings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../WSChat/src/main/webapp/CSS/logCSS/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../WSChat/src/main/webapp/JS/loginJS.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../../WSChat/src/main/webapp/JS/loginJS.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../WSChat/src/main/webapp/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../../WSChat/src/main/webapp/login.html" afterDir="false" />
-    </list>
+    <list default="true" id="002175e1-637d-472a-a954-c12e192adba4" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

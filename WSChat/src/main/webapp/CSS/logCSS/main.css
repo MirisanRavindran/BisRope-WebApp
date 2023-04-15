@@ -52,6 +52,7 @@ body {
     font-size: 2em;
     color: black;
     text-align: center;
+    margin-bottom: 50px;
 }
 
 .CreateTitleText
@@ -59,6 +60,7 @@ body {
     font-size: 2em;
     color: black;
     text-align: center;
+    margin-bottom: 60px;
 }
 
 .CreateUsernameInput
@@ -131,7 +133,7 @@ body {
 }
 
 input:focus ~ label,
-input:focus ~ :valid
+input:not(:placeholder-shown) ~ label
 {
     top: -5px;
 }
