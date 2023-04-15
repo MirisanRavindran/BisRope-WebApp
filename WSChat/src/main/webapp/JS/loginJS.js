@@ -55,7 +55,6 @@ function logIn(){
                 alert("Username or password is incorrect. Please try again.");
 
             }
-            throw new Error('Network response was not ok.');
         })
 
     //pass the username variable to the homepageJS file
