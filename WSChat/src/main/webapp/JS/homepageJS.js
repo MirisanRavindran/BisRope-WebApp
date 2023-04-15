@@ -64,9 +64,9 @@ function updateServerList(){
             throw new Error('Network response was not ok.');
         })
         .then(data => {
+            const table = document.getElementById("serverTable");
             serverArray = data.slice(1, -1).split(", ");
             console.log(roomArray);
-            var serverListElement = document.getElementById("serverTable");
             serverListElement.innerHTML = "";
             for (let i = 0; i < roomArray.length; i++) {
                 // Create a new row in the chat room list table
