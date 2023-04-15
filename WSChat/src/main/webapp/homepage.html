@@ -63,7 +63,15 @@
         <div class="serverButton">
             <button id="add-Server" onclick="createNewServer()"><img src="Images/plusButton-removebg-preview.png" class="plusButton1" width="50px" height="50px"></button>
             <h4 class="serverMessage">Add a new server!</h4>
-            <input type="text" class="" id="serverName" placeholder="Server Name">
+            <!--Allows the user to input a name for their new server-->
+            <div class="serverInput">
+                <div class="serverInputTitle">
+                    <h3>Create a new server!</h3>
+                </div>
+                <div class="serverInputBox">
+                    <input type="text" id="serverName" class="serverInputBox" placeholder="Server Name">
+                    <button id="addServer" onclick="createNewServer()">Add Server</button>
+                </div>
 
         </div>
         <div class="dmButton">
