@@ -73,7 +73,7 @@
         </div>
       </div>
       <div class="inputArea">
-        <input autocomplete="off" title="Chat Input" placeholder="Message" id="inputText" type="text" autofocus/>
+        <input autocomplete="off" title="Chat Input" placeholder="Message" id="inputText" onfocus="hideEmojiPanel()" type="text" autofocus/>
       </div>
     </div>
 
@@ -106,6 +106,9 @@
       Input File
       <input type="file" id="imageFile" onchange="SendImage(this);" accept="image/*" style="display: none"/>
     </a>
+  </div>
+  <div>
+    <a onclick="showEmojiPanel()">&#128512;</a>
   </div>
   <div class="emoji-container">
     <a onclick="getEmoji(this)">&#128557;</a>

@@ -238,7 +238,12 @@ container.addEventListener('wheel', (e) => {
     }
 });
 
-
+function showEmojiPanel() {
+    document.querySelector(".emoji-container").removeAttribute("style");
+}
+function hideEmojiPanel() {
+    document.querySelector(".emoji-container").setAttribute("style", "display:none;");
+}
 function getEmoji(code) {
     document.getElementById("inputText").value += code.textContent;
 }
