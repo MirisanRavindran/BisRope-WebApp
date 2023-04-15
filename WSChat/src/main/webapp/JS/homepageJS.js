@@ -66,10 +66,12 @@ function updateServerList() {
                 console.log(response.text);
                 return response.text();
             }
-            throw new Error('Network response was not ok.');
         })
         .then(data => {
             const table = document.getElementById("serverTable");
+            while (table.rows.length > 0) {
+                table.deleteRow(0);
+            }
             serverArray = data.slice(1, -1).split(", ");
             if (serverArray!="") {
                 for (let i = 0; i < serverArray.length; i++) {

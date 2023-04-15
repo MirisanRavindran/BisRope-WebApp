@@ -17,7 +17,6 @@ function createUser() {
         .then(response => {
             if (response.ok) {
                 // If the response status is "ok", return the response text
-				alert("Account creation successful");
                 console.log(response.text);
             }
             if (response.status === 401){
@@ -26,7 +25,6 @@ function createUser() {
 
 
             }
-            throw new Error('Network response was not ok.');
         })
         //Creates a message in HTML that indicates that the account has already been created
 }
