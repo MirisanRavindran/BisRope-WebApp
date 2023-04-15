@@ -36,16 +36,6 @@
   </div>
 </div>
 
-<div class="imgbtn">
-  <a onclick="ChooseImage()">
-    Send Image
-    <input type="file" id="imageFile" onchange="SendImage(this);" accept="image/*" style="display: none"/>
-  </a>
-</div>
-<div id="smiley">
-  <a id="emoji" onclick="showEmojiPanel()">Send Emoji</a>
-  <a onclick="getEmoji(this)">&#128540;</a>
-</div>
 
 <!--Div container holds the content of each page with a corresponing tab button -->
 <div class = "tab-content">
@@ -78,6 +68,8 @@
     <div class="ChatBox">
       <div class="ChatSpace" >
         <div class="textArea" >
+          <div class="Message">
+          </div>
         </div>
       </div>
       <div class="inputArea">
@@ -107,6 +99,25 @@
         </table>
       </center>
     </div>
+  </div>
+
+  <div class="imgbtn">
+    <a onclick="ChooseImage()">
+      Input File
+      <input type="file" id="imageFile" onchange="SendImage(this);" accept="image/*" style="display: none"/>
+    </a>
+  </div>
+  <div class="emoji-container">
+    <a onclick="getEmoji(this)">&#128557;</a>
+    <a onclick="getEmoji(this)">&#128526;</a>
+    <a onclick="getEmoji(this)">&#128512;</a>
+    <a onclick="getEmoji(this)">&#128514;</a>
+    <a onclick="getEmoji(this)">&#129313;</a>
+    <a onclick="getEmoji(this)">&#129299;</a>
+    <a onclick="getEmoji(this)">&#128151;</a>
+    <a onclick="getEmoji(this)">&#128077;</a>
+    <a onclick="getEmoji(this)">&#129324;</a>
+    <a onclick="getEmoji(this)">&#128564;</a>
   </div>
 
 
