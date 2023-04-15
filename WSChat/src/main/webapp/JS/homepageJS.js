@@ -2,7 +2,7 @@
 
 //Function call to create a new server 
 function createNewServer(){
-    var servername = document.getElementById("servername").value;
+    var servername = document.getElementById("serverName").value;
     var username = localStorage.getItem("username");
     const url = "http://localhost:8080/BisRopeServer-1.0-SNAPSHOT/api/bisrope-server/create-server/"+ servername +"/" + username;
     fetch(url, {
