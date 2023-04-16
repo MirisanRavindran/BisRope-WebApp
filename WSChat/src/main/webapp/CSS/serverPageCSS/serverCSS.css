@@ -261,7 +261,69 @@ body {
 
 .userListTitle{
     position: fixed;
+    left: 1750px;
+    top: 20px;
+    width: 200px;
+    height: 40px;
+    background-color: #26A69A;
+}
+
+.roomList
+{
+    position: fixed;
+    left: 150px;
+    width: 200px;
+    padding: 10px;
+    top: 80px;
+    height: 825px;
+    background-color: #b8abd3;
+    margin-right: 30px;
+    border-radius: 20px;
+
+}
+
+.userList{
+    position: fixed;
     left: 1650px;
+    top: 100px;
+    width: 200px;
+    height: 825px;
+    background-color: rgb(97, 235, 205);
+    border-radius: 20px;
+}
+
+.displayName{
+    position: fixed;
+    left: 850px;
+    top: 20px;
+    width: 200px;
+    height: 40px;
+    background-color: #26A69A;
+    border-radius: 20px;
+}
+
+.displayNameButton{
+    position: fixed;
+    left: 850px;
+    top: 20px;
+    width: 200px;
+    height: 40px;
+    background-color: #be4ac9;
+    border-radius: 20px;
+}
+
+.serverRoomTitle{
+    position: fixed;
+    left: 100px;
+    top: 20px;
+    width: 200px;
+    height: 40px;
+    background-color: #26A69A;
+}
+
+.serverRoomTitle{
+    position: fixed;
+    left: 100px;
     top: 20px;
     width: 200px;
     height: 40px;

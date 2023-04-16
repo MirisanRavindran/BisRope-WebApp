@@ -270,3 +270,14 @@ body {
     margin-right: 30px;
     border-radius: 20px;
 }
+
+.serverInputBox {
+    position: fixed;
+    left: 1652px;
+    top: 820px;
+    width: 190px;
+    padding: 10px;
+    background-color: white;
+    margin-right: 30px;
+    border-radius: 20px;
+}
