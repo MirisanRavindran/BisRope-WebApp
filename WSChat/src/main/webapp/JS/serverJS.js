@@ -3,6 +3,7 @@
 window.onload = function() {
     refreshRoomList();
     displayServerID();
+    refreshUserList();
 };
 
 function displayServerID(){
@@ -28,6 +29,9 @@ function refreshRoomList(){
             if (response.status === 401) {
                 // If the response status is "ok", return the response text
                 console.log("you done fucked up");
+            }
+            else{
+                return response.text();
             }
         })
         .then(data => {
@@ -60,56 +64,53 @@ function refreshRoomList(){
         })
 }
 
-//Function call to create a new room
-function createNewRoom(){
-    var serverId = localStorage.getItem("serverId");
+function refreshUserList(){
+    var serverName = localStorage.getItem("serverName");
     var username = localStorage.getItem("username");
-    var roomName = document.getElementById("roomName").value;
-    const url = "http://localhost:8080/BisRopeServer-1.0-SNAPSHOT/api/bisrope-server/create-room/"+ serverId +"/" + username + "/" + roomName;
+    const url = "http://localhost:8080/BisRopeServer-1.0-SNAPSHOT/api/bisrope-server/get-server-users/"+ serverName;
     fetch(url, {
         method: 'GET',
     })
         .then(response => {
-            if (response.ok) {
+            if (response.status === 401) {
                 // If the response status is "ok", return the response text
-                console.log(response.text);
-                //add room to the room list
-                addRoomToServerList(response.text, roomName);
-
-
-                refreshRoomList();
+                console.log("you done fucked up");
             }
-            throw new Error('Network response was not ok.');
+            else{
+                return response.text();
+            }
+        })
+        .then(data => {
+            // If the response was successful, clear the existing table and append the retrieved chat rooms to the table
+            const table = document.getElementById("UserTable");
+            while (table.rows.length > 0) {
+                table.deleteRow(0);
+            }
+
+            // Split the retrieved chat room list into an array
+            console.log(data);
+            roomArray = data.slice(1, -1).split(", ");
+            console.log(roomArray);
+            for (let i = 0; i < roomArray.length; i++) {
+                // Create a new row in the chat room list table
+                const row = table.insertRow();
+                // Create a new cell in the row and add a link to the chat room
+                const cell = row.insertCell();
+                const linkText = document.createTextNode(roomArray[i]);
+                const link = document.createElement("a");
+                link.appendChild(linkText);
+                cell.appendChild(link);
+            }
         })
 }
 
-function addRoomToServerList(roomId, roomName){
-    var roomListHTML = document.getElementById("roomList").innerHTML;
-    roomListHTML += "<li><a href=\"#\" onclick=\"joinRoom(" + roomId + ")\">" + roomName + "</a></li>";
-    document.getElementById("roomList").innerHTML = roomListHTML;
-}
+//Function call to create a new room
+
 
 //Function call to join an existing room
-function joinRoom(){
-    var roomId = document.getElementById("roomId").value;
-    var username = localStorage.getItem("username");
-    const url = "http://localhost:8080/BisRopeServer-1.0-SNAPSHOT/api/bisrope-server/join-room/"+ roomId +"/" + username;
-    fetch(url, {
-        method: 'GET',
-    })
-        .then(response => {
-            if (response.ok) {
-                // If the response status is "ok", return the response text
-                console.log(response.text);
-                alert("Room joined successfully");
-            }
-            if (response.status === 401){
-                console.log("Room name does not exist. Please try again.");
-                alert("Room name does not exist. Please try again.");
-            }
-            throw new Error('Network response was not ok.');
-        })
-
+function joinRoom(roomID){
+    localStorage.setItem("roomID",roomID);
+    window.location.href = "dmpage.html";
 }
 
 
