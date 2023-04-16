@@ -1,0 +1,40 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin:0;
+    padding:0;
+    background-color: #006653;
+    color:aliceblue;
+    font-family: 'Poppins', sans-serif;
+
+}
+
+main {
+    width: 1400px;
+    margin: 0 auto;
+    height: 75vh;
+}
+
+.user-stream {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
+    gap:1em;
+
+}
+
+#videos{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap:2em;
+}
+.video-player{
+    background-color:black;
+    width: 100%;
+    height: 300px; /* Changed to 400px */
+    /*object-fit: cover*/
+}
+
