@@ -226,38 +226,28 @@ body {
 }
 
 .serverRoomList{
-    position: fixed;
-    left: 100px;
-    top: 100px;
-    width: 100px;
+    position: relative;
+    width: 100%;
     background-color: aliceblue;
 }
 
-.serverRoomTitle{
-    position: fixed;
-    left: 100px;
-    top: 20px;
-    width: 200px;
+.ServerListTitle
+{
+    position: relative;
+    background-image: linear-gradient(45deg, #c63737, #5b0000);
+    color: white;
     height: 40px;
-    background-color: #26A69A;
-}
-
-.serverRoomTitle:hover{
-    transform: translate(0px,-10px);
-    transition: all 0.25s ease-in-out;
-    box-shadow: 5px 5px 5px #E3F2FD;
-}
-
-
-.userList{
-    position: fixed;
-    left: 1650px;
-    top: 100px;
-    width: 200px;
-    height: 825px;
-    background-color: aliceblue;
+    width: 120%;
+    left: -10%;
     border-radius: 20px;
+    padding: 2px 0px 19px 0px;
+    vertical-align: center;
+    margin-bottom: 20px;
+    top: -10px;
+    font-size: 20px;
+    font-weight: bold;
 }
+
 
 .userListTitle{
     position: fixed;
@@ -270,26 +260,26 @@ body {
 
 .roomList
 {
-    position: fixed;
-    left: 150px;
-    width: 200px;
+    position: relative;
+    left: -35%;
+    width: 15%;
     padding: 10px;
-    top: 80px;
-    height: 825px;
+    top: 12%;
+    height: 80%;
     background-color: #b8abd3;
     margin-right: 30px;
     border-radius: 20px;
-
 }
 
-.userList{
-    position: fixed;
-    left: 1650px;
+.userList
+{
+    position: relative;
+    left: 27%;
     top: 100px;
-    width: 200px;
+    width: 15%;
     height: 825px;
-    background-color: rgb(97, 235, 205);
     border-radius: 20px;
+    background-color: rgb(97, 235, 205);
 }
 
 .displayName{
