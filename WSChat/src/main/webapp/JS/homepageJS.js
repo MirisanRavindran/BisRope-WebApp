@@ -94,10 +94,8 @@ function updateServerList() {
                             }
                         })
                         .then(data => {
-                            console.log(typeof (data));
                             const linkText = document.createTextNode(data);
                             const link = document.createElement("a");
-                            console.log(linkText);
                             link.appendChild(linkText);
                             link.href = "#"; // Set href to # so that the link doesn't redirect the page
                             // When the link is clicked, call the enterRoom() function for the selected chat room

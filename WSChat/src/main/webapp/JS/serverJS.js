@@ -42,9 +42,7 @@ function refreshRoomList(){
             }
 
             // Split the retrieved chat room list into an array
-            console.log(data);
             roomArray = data.slice(1, -1).split(", ");
-            console.log(roomArray);
             for (let i = 0; i < roomArray.length; i++) {
                 // Create a new row in the chat room list table
                 const row = table.insertRow();
@@ -88,9 +86,7 @@ function refreshUserList(){
             }
 
             // Split the retrieved chat room list into an array
-            console.log(data);
             roomArray = data.slice(1, -1).split(", ");
-            console.log(roomArray);
             for (let i = 0; i < roomArray.length; i++) {
                 // Create a new row in the chat room list table
                 const row = table.insertRow();
@@ -103,8 +99,26 @@ function refreshUserList(){
             }
         })
 }
-
-//Function call to create a new room
+function createNewRoom(){
+    var serverId = document.getElementById("serverName").value;
+    const url = "http://localhost:8080/BisRopeServer-1.0-SNAPSHOT/api/bisrope-server/add-room/"+ serverId;
+    fetch(url, {
+        method: 'GET',
+    })
+        .then(response => {
+            if (response.ok) {
+                // If the response status is "ok", return the response text
+                console.log(response.text);
+                alert("Room added successfully");
+                refreshRoomList();
+            }
+            if (response.status === 401){
+                console.log("Server name does not exist. Please try again.");
+                alert("Server name does not exist. Please try again.");
+            }
+            throw new Error('Network response was not ok.');
+        })
+}
 
 
 //Function call to join an existing room

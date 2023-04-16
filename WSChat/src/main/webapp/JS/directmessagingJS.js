@@ -4,36 +4,17 @@
 let ws;
 
 window.onload = function() {
-    getRooms();
-    console.log(localStorage.getItem("roomID"));
+    const roomID = localStorage.getItem("roomID");
+    console.log(roomID);
+    enterRoom(roomID);
 };
-// The getRooms function is called when the page is loaded.
-// It retrieves the list of chat rooms from the server and displays them in the list of chat rooms.
-function getRooms(){
-    const id = localStorage.getItem("roomID");
-    if (!id) return; // If the id is null, skip creating the link element
-    console.log(id);
-    const table = document.getElementById("Chat-list-table");
-    const row = table.insertRow();
-    const cell = row.insertCell();
-    const link = document.createElement("a");
-    link.appendChild(document.createTextNode(id));
-    link.href = "#"; // Set href to # so that the link doesn't redirect the page
-    // When the link is clicked, call the enterRoom() function for the selected chat room
-    link.onclick = function() {
-        enterRoom(localStorage.getItem("roomID"));
-        return false; // Prevent the link from redirecting the page
-    }
-    cell.appendChild(link);
-    // Define the URL for the API endpoint that returns the list of chat rooms
-}
-
 
 // The newRoom function creates a new chat room by making a GET request to the server
 function enterRoom(code) {
-    const body = code;
+    const user = localStorage.getItem("username");
 
-    ws = new WebSocket("ws://localhost:8080/WSChat-1.0-SNAPSHOT/ws/" + code + "/" + code);
+
+    ws = new WebSocket("ws://localhost:8080/WSChat-1.0-SNAPSHOT/ws/" + code + "/" + user);
 
     ws.onmessage = function (event) {
         console.log(event.data);
