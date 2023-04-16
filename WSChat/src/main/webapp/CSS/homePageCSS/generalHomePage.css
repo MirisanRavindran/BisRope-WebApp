@@ -132,23 +132,81 @@ body {
 
 .serverButtonContainer{
     position: relative;
-    top: 670px;
+    top: 580px;
+    justify-content: space-between;
+    display: inline;
 }
 
 .server-list
 {
-    float: left;
     position: fixed;
     left: 1650px;
-    top:100px;
     width: 200px;
     padding: 10px;
+    top: 40px;
     height: 825px;
     background-color: #5E35B1;
     margin-right: 30px;
     border-radius: 20px;
 
 }
+
+.serverInputBox{
+    background: #64B5F6;
+    border-color: #64B5F6;
+    color: black;
+    height: 30px;
+    font-size: 16.5px;
+}
+
+.joinServerButton {
+    background: #5E5DF0;
+    border-radius: 20px;
+    box-shadow: #5E5DF0 0 10px 20px -10px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-family: Inter,Helvetica,"Apple Color Emoji","Segoe UI Emoji",NotoColorEmoji,"Noto Color Emoji","Segoe UI Symbol","Android Emoji",EmojiSymbols,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue","Noto Sans",sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    opacity: 1;
+    outline: 0 solid transparent;
+    padding: 8px 18px;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    width: 200px;
+    word-break: break-word;
+    border: 0;
+    margin: 10px;
+    display: inline;
+    margin-right: auto;
+    position: relative;
+    right: 10px;
+  }
+  .createServerButton {
+    background: #5E5DF0;
+    border-radius: 20px;
+    box-shadow: #5E5DF0 0 10px 20px -10px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-family: Inter,Helvetica,"Apple Color Emoji","Segoe UI Emoji",NotoColorEmoji,"Noto Color Emoji","Segoe UI Symbol","Android Emoji",EmojiSymbols,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue","Noto Sans",sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    opacity: 1;
+    outline: 0 solid transparent;
+    padding: 8px 18px;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    width: 200px;
+    word-break: break-word;
+    border: 0;
+    display: inline;
+  }
 
 /*.server-list:hover{*/
 /*    transform: translate(0px,-10px);*/

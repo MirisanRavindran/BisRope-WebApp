@@ -32,7 +32,7 @@ function createNewServer(){
 //Function call to join an existing server
 //Is used for someone who isn't part of the server but has the code
 function addExistingServer(){
-    var serverId = document.getElementById("serverId").value;
+    var serverId = document.getElementById("serverName").value;
     var username = localStorage.getItem("username");
     const url = "http://localhost:8080/BisRopeServer-1.0-SNAPSHOT/api/bisrope-server/join-server/"+ serverId +"/" + username;
     fetch(url, {
@@ -43,6 +43,7 @@ function addExistingServer(){
                 // If the response status is "ok", return the response text
                 console.log(response.text);
                 alert("Server joined successfully");
+                updateServerList();
             }
             if (response.status === 401){
                 console.log("Server name does not exist. Please try again.");
@@ -120,8 +121,6 @@ function updateServerList() {
 
 //Function call to change page to the server listed
 function joinSelectedServer(serverName){
-    var serverListElement = document.getElementById("serverList");
-    var serverElement = document.createElement("li");
-    serverElement.innerHTML = serverName;
-    serverListElement.appendChild(serverElement);
+    localStorage.setItem("serverName", serverName);
+    window.location.href = "serverpage.html";
 }

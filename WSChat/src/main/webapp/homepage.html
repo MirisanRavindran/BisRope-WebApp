@@ -28,19 +28,23 @@
       <div class="server-list-title">
         List of Servers
       </div>
-      <table class="serverListTable" id="serverTable">
-        <tr>
-          <th>Server ID</th>
-        </tr>
+      <center>
+        <table class="serverListTable" id="serverTable">
+            <tr>
+              <th>Server ID</th>
+            </tr>
+          </table>
+          <div class="buttons">
+            <div class="serverButtonContainer">
+                <input type="text" id="serverName" class="serverInputBox" placeholder="Server Name or ID"></input>
+                <button class="joinServerButton" onclick="addExistingServer()">Join Existing Server</button>
+                <button class="createServerButton" onclick="createNewServer()">Create New Server</button>
+            </div>
+        </div>
+      </center>
     </div>
   </div>
 <!--Displays two buttons, one to make a new server, and one to make a new dm-->
-    <div class="buttons">
-        <div class="serverButtonContainer">
-            <input type="text" id="serverName" class="serverInputBox" placeholder="Server Name">Input your server name here</input>
-            <h4 class="serverMessage">Add a new server!</h4>
-            <button class="serverButton" onclick="createNewServer()">Add Server</button>
-        </div>
-    </div>
+    
 </body>
 </html>
