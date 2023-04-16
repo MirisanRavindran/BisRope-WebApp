@@ -130,6 +130,11 @@ body {
 
 }
 
+.serverButtonContainer{
+    position: relative;
+    top: 670px;
+}
+
 .server-list
 {
     float: left;
@@ -145,11 +150,11 @@ body {
 
 }
 
-.server-list:hover{
-    transform: translate(0px,-10px);
-    transition: all 0.25s ease-in-out;
-    box-shadow: 5px 5px 5px #E3F2FD;
-}
+/*.server-list:hover{*/
+/*    transform: translate(0px,-10px);*/
+/*    transition: all 0.25s ease-in-out;*/
+/*    box-shadow: 5px 5px 5px #E3F2FD;*/
+/*}*/
 
 
 .dmButton{

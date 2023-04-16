@@ -43,4 +43,22 @@ public class BisropeServers {
 
         else{return false;}
     }
+    public String getServerCode(String name){
+        for (String key : activeServers.keySet()) {
+            if(activeServers.get(key).getName().equals(name)){
+                return key;
+            }
+        }
+        return "something went wrong";
+    }
+
+    public ArrayList getRoomList(String name){
+        String code = getServerCode(name);
+
+        if(activeServers.containsKey(code)){
+            return activeServers.get(code).getRoomCodes();
+        }
+        ArrayList<String> list = null;
+        return list;
+    }
 }

@@ -10,95 +10,37 @@
    <script type="text/javascript" src="JS/homepageJS.js"></script>
 
 </head>
-
 <body>
-
     <header>
-
         <div class="BisropeLogo">
             <div class="container">
                 <div class="logo">
                     <img src="Images/bisropeLowVis.png" class="logo_img" width="100" height="100">
                 </div>
-                
             </div>
-
-
         </div>
     </header>
-
-
  <!--Displays a list of active chat rooms, and an option to create a new one-->
  <div class="app">
     <div class="infoCard"></div>
-    <div class="chat-list">
-      <div class="chat-list-title">
-        List of Direct Messages
-      </div>
-      
-    </div>
-
 <!--Displays a list of active servers, and an option to create a new one-->
     <div class="server-list" id="servers">
       <div class="server-list-title">
         List of Servers
       </div>
-      
       <table class="serverListTable" id="serverTable">
         <tr>
           <th>Server ID</th>
         </tr>
-
-
     </div>
   </div>
-
-\
 <!--Displays two buttons, one to make a new server, and one to make a new dm-->
     <div class="buttons">
-        <div class="serverButton">
+        <div class="serverButtonContainer">
             <input type="text" id="serverName" class="serverInputBox" placeholder="Server Name">Input your server name here</input>
             <h4 class="serverMessage">Add a new server!</h4>
-
             <button class="serverButton" onclick="createNewServer()">Add Server</button>
-
-
-
-
-
-                
-
         </div>
-        
     </div>
-
-
-
-
-
-    <div class="notification_container">
-        <div class="notification-title">
-            <h3>Your Notifications</h3>
-        </div>
-        
-    </div>
-
-
-
-
-
-
-
-
-
-
-
-
 </body>
-
-
-
-
-
-
 </html>
