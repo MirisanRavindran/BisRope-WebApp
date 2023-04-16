@@ -250,10 +250,10 @@ body {
 
 .userList{
     position: fixed;
-    left: 1650px;
-    top: 100px;
-    width: 200px;
-    height: 825px;
+    left: 82%;
+    top: 10%;
+    width: 14%;
+    height: 86%;
     background-color: aliceblue;
     border-radius: 20px;
 }
