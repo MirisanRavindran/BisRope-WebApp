@@ -46,10 +46,19 @@ public class ChatServer {
     public void handleMessage(@PathParam("user") String user, String comm, Session session) throws IOException, EncodeException {
         JSONObject jsonmsg = new JSONObject(comm);
         String message = (String) jsonmsg.get("msg");
+        String type = (String) jsonmsg.get("type");
             // broadcasting it to peers in the same room
-        for(Session peer: session.getOpenSessions()){
-            // only send my messages to those in the same room
-            peer.getBasicRemote().sendText("{\"type\": \"chat\", \"message\":\"(" + user + "): " + message + "\"}");
+        if (type.equals("chat")) {
+            for(Session peer: session.getOpenSessions()){
+                // only send my messages to those in the same room
+                peer.getBasicRemote().sendText("{\"type\": \"chat\", \"message\":\"(" + user + "): " + message + "\"}");
+            }
+        }
+        else if (type.equals("image")) {
+            for (Session peer : session.getOpenSessions()) {
+                // only send my messages to those in the same room
+                peer.getBasicRemote().sendText("{\"type\": \"image\", \"message\":\"" + message + "\", \"username\":\"" + username + "\"}");
+            }
         }
     }
 
