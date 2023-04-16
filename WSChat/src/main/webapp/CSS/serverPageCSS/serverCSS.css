@@ -25,30 +25,30 @@ body {
     animation: fadeIn ease 0.5s;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
-  }
+}
 
-    /*Defining the animation where the homepage fades into the screen when first accessed*/
-    @keyframes fadeIn {
-        0% {
+/*Defining the animation where the homepage fades into the screen when first accessed*/
+@keyframes fadeIn {
+    0% {
         opacity:0;
-        }
-        100% {
+    }
+    100% {
         opacity:1;
-        }
     }
-  
-    /*Defining the animation where the background of the body changes from one color to another*/
-    @keyframes gradient {
-        0% {
+}
+
+/*Defining the animation where the background of the body changes from one color to another*/
+@keyframes gradient {
+    0% {
         background-position: 0% 50%;
-        }
-        50% {
+    }
+    50% {
         background-position: 100% 50%;
-        }
-        100% {
-        background-position: 0% 50%;
-        }
     }
+    100% {
+        background-position: 0% 50%;
+    }
+}
 
 
 .logo {
@@ -156,7 +156,7 @@ body {
     position: fixed;
     left: 650px;
     top: 100px;
- 
+
     background-color: transparent;
 }
 
@@ -164,7 +164,7 @@ body {
     position: fixed;
     left: 650px;
     top: 150px;
-    
+
     border-radius: 15px;
     background-color: #222e3a;
 }
@@ -173,7 +173,7 @@ body {
     position: fixed;
     left: 650px;
     top: 220px;
-    
+
     border-radius: 15px;
     background-color: #222e3a;
 }
@@ -210,36 +210,37 @@ body {
 
 .roomList{
     position: fixed;
-    left: 6%;
-    top: 10%;
-    width: 15%;
+    left: 100px;
+    top: 100px;
+    width: 100px;
     height: 825px;
     background-color: aliceblue;
     border-radius: 20px;
-    align-items: center;
 }
 
 .ServerTitle{
     position: fixed;
     left: 100px;
     top: 20px;
-    
+
 }
 
 .serverRoomList{
+    position: fixed;
+    left: 100px;
+    top: 100px;
+    width: 100px;
     background-color: aliceblue;
 }
 
 .serverRoomTitle{
-    position: relative;
-    width: 110%;
+    position: fixed;
+    left: 100px;
+    top: 20px;
+    width: 200px;
     height: 40px;
-    left: -6.9%;
-    border-radius: 20px;
-    padding: 5px;
     background-color: #26A69A;
 }
-
 
 .serverRoomTitle:hover{
     transform: translate(0px,-10px);
@@ -250,17 +251,79 @@ body {
 
 .userList{
     position: fixed;
-    left: 82%;
-    top: 10%;
-    width: 14%;
-    height: 86%;
+    left: 1650px;
+    top: 100px;
+    width: 200px;
+    height: 825px;
     background-color: aliceblue;
     border-radius: 20px;
 }
 
 .userListTitle{
     position: fixed;
+    left: 1750px;
+    top: 20px;
+    width: 200px;
+    height: 40px;
+    background-color: #26A69A;
+}
+
+.roomList
+{
+    position: fixed;
+    left: 150px;
+    width: 200px;
+    padding: 10px;
+    top: 80px;
+    height: 825px;
+    background-color: #b8abd3;
+    margin-right: 30px;
+    border-radius: 20px;
+
+}
+
+.userList{
+    position: fixed;
     left: 1650px;
+    top: 100px;
+    width: 200px;
+    height: 825px;
+    background-color: rgb(97, 235, 205);
+    border-radius: 20px;
+}
+
+.displayName{
+    position: fixed;
+    left: 850px;
+    top: 20px;
+    width: 200px;
+    height: 40px;
+    background-color: #26A69A;
+    border-radius: 20px;
+}
+
+.displayNameButton{
+    position: fixed;
+    left: 850px;
+    top: 20px;
+    width: 200px;
+    height: 40px;
+    background-color: #be4ac9;
+    border-radius: 20px;
+}
+
+.serverRoomTitle{
+    position: fixed;
+    left: 100px;
+    top: 20px;
+    width: 200px;
+    height: 40px;
+    background-color: #26A69A;
+}
+
+.serverRoomTitle{
+    position: fixed;
+    left: 100px;
     top: 20px;
     width: 200px;
     height: 40px;

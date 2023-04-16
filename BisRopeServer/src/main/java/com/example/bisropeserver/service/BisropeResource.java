@@ -55,6 +55,7 @@ public class BisropeResource {
     @Produces("text/plain")
     public Response createServer(@PathParam("server-name") String name, @PathParam("username") String username) {
         String id = servers.createServer(name);
+        servers.getServer(id).addUsers(username);
         users.getUser(username).addServer(id);
         return Response.status(200)
                 .header("Access-Control-Allow-Origin", "*")
