@@ -210,12 +210,13 @@ body {
 
 .roomList{
     position: fixed;
-    left: 100px;
-    top: 100px;
-    width: 100px;
+    left: 6%;
+    top: 10%;
+    width: 15%;
     height: 825px;
     background-color: aliceblue;
     border-radius: 20px;
+    align-items: center;
 }
 
 .ServerTitle{
@@ -226,21 +227,19 @@ body {
 }
 
 .serverRoomList{
-    position: fixed;
-    left: 100px;
-    top: 100px;
-    width: 100px;
     background-color: aliceblue;
 }
 
 .serverRoomTitle{
-    position: fixed;
-    left: 100px;
-    top: 20px;
-    width: 200px;
+    position: relative;
+    width: 110%;
     height: 40px;
+    left: -6.9%;
+    border-radius: 20px;
+    padding: 5px;
     background-color: #26A69A;
 }
+
 
 .serverRoomTitle:hover{
     transform: translate(0px,-10px);
