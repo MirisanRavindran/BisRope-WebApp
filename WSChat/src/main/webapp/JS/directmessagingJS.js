@@ -29,7 +29,9 @@ function enterRoom(code) {
         }
     });
 }
-
+function goBack(){
+    window.location.href = "serverpage.html";
+}
 
 function timestamp() {
     var d = new Date(), minutes = d.getMinutes();

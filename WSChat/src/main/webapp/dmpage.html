@@ -70,7 +70,9 @@
       <input title="Chat Input" id="input" type="text" style="display: block; width: 100%; border-width: 1px 0 1px 0;"
              autofocus/>
       <div class="infoCard">
-
+        <div class = "GoBack">
+          <button class="GoBack" onclick="goBack()">Server</button>
+        </div>
       </div>
 
       <!--Class containing the chatroom interface-->
@@ -84,6 +86,7 @@
           <div id="update-user" class="update"></div>
           <div class="message other-message"></div>
         </div>
+
 
         <div class="typebox">
           <textarea onwheel="scrollTextarea(event)" type="text" id="message-input" placeholder="Text Message" required ></textarea>

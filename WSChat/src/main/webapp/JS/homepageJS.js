@@ -52,7 +52,9 @@ function addExistingServer(){
             throw new Error('Network response was not ok.');
         })
 }
-
+function goBack(){
+    window.location.href = "login.html";
+}
 //Function call to update the list of servers, defined in the list of servers in the HTML file
 function updateServerList() {
     var username = localStorage.getItem("username");

@@ -100,7 +100,7 @@ function refreshUserList(){
         })
 }
 function createNewRoom(){
-    var serverId = document.getElementById("serverName").value;
+    var serverId = localStorage.getItem("serverName");
     const url = "http://localhost:8080/BisRopeServer-1.0-SNAPSHOT/api/bisrope-server/add-room/"+ serverId;
     fetch(url, {
         method: 'GET',
@@ -110,7 +110,6 @@ function createNewRoom(){
                 // If the response status is "ok", return the response text
                 console.log(response.text);
                 alert("Room added successfully");
-                refreshRoomList();
             }
             if (response.status === 401){
                 console.log("Server name does not exist. Please try again.");
@@ -118,9 +117,12 @@ function createNewRoom(){
             }
             throw new Error('Network response was not ok.');
         })
+    refreshRoomList();
 }
 
-
+function goBack(){
+    window.location.href = "homepage.html";
+}
 //Function call to join an existing room
 function joinRoom(roomID){
     localStorage.setItem("roomID",roomID);
