@@ -15,38 +15,44 @@ function enterRoom(code) {
     const user = localStorage.getItem("username");
 
 
+    // Establish a WebSocket connection to the server
     ws = new WebSocket("ws://localhost:8080/WSChat-1.0-SNAPSHOT/ws/" + code + "/" + user);
 
+// Handle incoming messages from the server
     ws.onmessage = function (event) {
         console.log(event.data);
         let message = JSON.parse(event.data);
         let messageContainer = document.querySelector(".textArea");
         let el = document.createElement("div");
         let time = timestamp();
+        // If the message type is "chat", display the message in the chat log
         if (message.type === "chat")
         {
             el.setAttribute("class", "text-bubble")
             el.innerHTML = `
-                        <div class="Message">
-                            <div>
-                                <div><p>[${time}] ${message.message}</p><div>
-                            </div>
+                    <div class="Message">
+                        <div>
+                            <div><p>[${time}] ${message.message}</p><div>
                         </div>
-                    `;
+                    </div>
+                `;
             messageContainer.appendChild(el);
         }
+        // If the message type is "image", display the image in the chat log
         else if (message.type === "image") {
             console.log(message)
             el.setAttribute("class", "image-container")
             el.innerHTML = `
-                        <div>
-                        [${time}]
-                            <img src='${message.message}' class="img-fluid"/>
-                        </div>
-                    `;
+                    <div>
+                    [${time}]
+                        <img src='${message.message}' class="img-fluid"/>
+                    </div>
+                `;
             messageContainer.appendChild(el);
         }
     }
+
+// Send a chat message when the user presses the Enter key
     document.getElementById("inputText").addEventListener("keyup", function (event) {
         if (event.keyCode === 13) {
             let request = {"type":"chat", "msg":event.target.value};
@@ -54,6 +60,7 @@ function enterRoom(code) {
             event.target.value = "";
         }
     });
+
 }
 function ChooseImage() {
     document.getElementById('imageFile').click();
@@ -61,9 +68,11 @@ function ChooseImage() {
 function SendImage(event) {
     var file = event.files[0];
 
+    // Ensure that the selected file is an image file
     if (!file.type.match("image.*")) {
         alert("Please select image only.");
     }
+// Send the image to the server if it is valid
     else {
         var reader = new FileReader();
 
@@ -79,6 +88,7 @@ function SendImage(event) {
             reader.readAsDataURL(file);
         }
     }
+
 }
 function goBack(){
     window.location.href = "serverpage.html";

@@ -1,44 +1,50 @@
+/*
+ * This class manages a collection of users in a HashMap, where the key is the user's username.
+ */
 package com.example.bisropeserver.util;
 
 import java.util.HashMap;
+
 import com.example.bisropeserver.domain.User;
 
 public class BisropeUsers {
-    private static HashMap<String,User> bisropeUsers = new HashMap<>();
+    private static HashMap<String, User> bisropeUsers = new HashMap<>();
 
-    public User getUser(String username){
+    // Get user by username
+    public User getUser(String username) {
         return bisropeUsers.get(username);
     }
 
-    public void createUser(String username, String password){
+    // Create new user and add it to the HashMap
+    public void createUser(String username, String password) {
         User user = new User(username, password);
-        bisropeUsers.put(username,user);
+        bisropeUsers.put(username, user);
     }
 
-    public boolean isUser(String username){
-        if(bisropeUsers.containsKey(username)){
+    // Check if user with the given username exists in the HashMap
+    public boolean isUser(String username) {
+        if (bisropeUsers.containsKey(username)) {
             return true;
-        }
-        else{
+        } else {
             return false;
         }
     }
 
-    public boolean isPassword(String username, String password){
-        if (bisropeUsers.containsKey(username)){
-            if (bisropeUsers.get(username).getPassword().equals(password)){
+    // Check if the given password matches the user's password in the HashMap
+    public boolean isPassword(String username, String password) {
+        if (bisropeUsers.containsKey(username)) {
+            if (bisropeUsers.get(username).getPassword().equals(password)) {
                 return true;
-            }
-            else{
+            } else {
                 return false;
             }
-        }
-        else{
+        } else {
             return false;
         }
     }
 
-    public void addServertoUser(String id, String username){
+    // Add server to the user's server list
+    public void addServertoUser(String id, String username) {
         bisropeUsers.get(username).addServer(id);
     }
 }
