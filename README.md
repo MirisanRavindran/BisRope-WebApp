@@ -1,29 +1,47 @@
 # w23-csci2020u-FinalProject-Mata-Cardoso-Martin-Ravindran-Panchal
 
-##This is the final project for the course CSCI2020U - Software Development
+## This is the final project for the course CSCI2020U - Software Development 
 Written by the following students:
+
 * [James Mata]()
 * [Andres Cardoso]()
 * [Dennis Martin]()
 * [Harsh Panchal]()
 * [Mirisan Ravindran]()
 
-##Project Description
+## Project Description
 
-BisRope is an advanced chatserver application that allows users to communicate with each other in servers, with each server hosting many users simultaneously.
+BisRope is an advanced chatserver application that allows users to create servers that contain chat rooms so that they can communicate in an organized way. This system supports an unlimited number of servers and chat rooms within memory. BisRope also supports the ability to send photos and emojis to other users aswell as video calling between 2 users. BisRope works with a Restful API and a Websocket API to perform such actions. 
 
-##Project Features
+![Screenshot](server.png)
 
+In this photo we can see the view from inside a server
+
+![Screenshot](chat.png)
+
+From this photo we can see the view from inside a room inside a server
+
+![Screenshot](video.png)
+
+From this photo we can see the view from inside a video call
+
+## Project Features
+
+* Account creation
 * Server creation and the ability to join pre-existing servers
+* Room creation and the ability to join existing rooms
 * Video calling between users
 * Text messaging between users
 * Image file transfer between users
+* Emoji messaging between users
 
-##How to use BisRope
-Initially, the entire repository must be cloned, and a glassfish server must be set up. The server must be set up with the following settings:
-* Port: 8080
+## How to use BisRope
+Initially, the entire repository must be cloned, and a glassfish server must be set up. For the BisropeServer project run glassfish local with the url http://localhost:8080/BisRopeServer-1.0-SNAPSHOT/ with the war exploded airtifact and for the WSChat Project run a remote server with the url http://localhost:8080/WSChat-1.0-SNAPSHOT/login.html with the war artifact
 
-Once the glassfish server is running, proceed to open the following file:
-* WSChat/src/webapp/login.html
+Starting up the application in the order local -> remote you should be met with the login screen where your can create an account and login
 
-And follow the written instructions on the login page. From there, you can run your server!
+## Libraries Used
+
+```sh
+Agora.io Sdk https://www.agora.io/en/
+```

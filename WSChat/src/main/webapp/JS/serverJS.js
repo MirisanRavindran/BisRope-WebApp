@@ -109,7 +109,6 @@ function createNewRoom(){
             if (response.ok) {
                 // If the response status is "ok", return the response text
                 console.log(response.text);
-                alert("Room added successfully");
             }
             if (response.status === 401){
                 console.log("Server name does not exist. Please try again.");
