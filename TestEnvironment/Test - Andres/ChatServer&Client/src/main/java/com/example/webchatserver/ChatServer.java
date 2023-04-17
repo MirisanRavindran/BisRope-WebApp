@@ -8,6 +8,7 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 
 @ServerEndpoint(value="/ws/{roomID}")
@@ -15,6 +16,8 @@ public class ChatServer {
 
     private Map<String, String> usernames = new HashMap<String, String>();
     private static Map<String, String> roomList = new HashMap<String, String>();
+
+    private String my = "";
 
 
     @OnOpen
@@ -62,15 +65,28 @@ public class ChatServer {
                 String username = usernames.get(userID);
                 System.out.println(username);
 
-                // broadcasting it to peers in the same room
-                for (Session peer : session.getOpenSessions()) {
-                    // only send my messages to those in the same room
-                    if (roomList.get(peer.getId()).equals(roomID)) {
-                        peer.getBasicRemote().sendText("{\"type\": \"chat\", \"message\":\"(" + username + "): " + message + "\"}");
+                if (Objects.equals(my, username))
+                {
+                    // broadcasting it to peers in the same room
+                    for (Session peer : session.getOpenSessions()) {
+                        // only send my messages to those in the same room
+                        if (roomList.get(peer.getId()).equals(roomID)) {
+                            peer.getBasicRemote().sendText("{\"type\": \"chat\", \"message\":\"(" + username + "): " + message + "\"}");
+                        }
+                    }
+                }else
+                {
+                    // broadcasting it to peers in the same room
+                    for (Session peer : session.getOpenSessions()) {
+                        // only send my messages to those in the same room
+                        if (roomList.get(peer.getId()).equals(roomID)) {
+                            peer.getBasicRemote().sendText("{\"type\": \"other\", \"message\":\"(" + username + "): " + message + "\"}");
+                        }
                     }
                 }
             } else { // first message is their username
                 usernames.put(userID, message);
+                my = message;
                 session.getBasicRemote().sendText("{\"type\": \"Server\", \"message\":\"(Server ): Welcome, " + message + "!\"}");
 
                 // broadcasting it to peers in the same room

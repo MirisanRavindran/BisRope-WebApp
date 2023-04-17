@@ -119,8 +119,10 @@ function newRoom(){
                 {
                     el.setAttribute("class", "Message")
                     el.innerHTML = `
-                        <div>
-                            <h3 id="ServerMessage">${message.message}</h3>
+                        <div class="Message">
+                            <div>
+                                <div><p>${message.message}[${time}]</p><div>
+                            </div>
                         </div>
                     `;
                     messageContainer.appendChild(el);
@@ -270,6 +272,20 @@ function hideEmojiPanel() {
 }
 function getEmoji(code) {
     document.getElementById("inputText").value += code.textContent;
+}
+
+function Load()
+{
+    let m = "hello";
+    let messageContainer = document.querySelector(".Load");
+    let el = document.createElement("div");
+    el.setAttribute("class", "TitleName")
+    el.innerHTML = `
+                        <div>
+                            <p>${m}</p>
+                        </div>
+                    `;
+    messageContainer.appendChild(el);
 }
 
 
