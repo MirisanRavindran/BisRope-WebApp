@@ -25,30 +25,30 @@ body {
     animation: fadeIn ease 0.5s;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
-  }
+}
 
-    /*Defining the animation where the homepage fades into the screen when first accessed*/
-    @keyframes fadeIn {
-        0% {
+/*Defining the animation where the homepage fades into the screen when first accessed*/
+@keyframes fadeIn {
+    0% {
         opacity:0;
-        }
-        100% {
+    }
+    100% {
         opacity:1;
-        }
     }
-  
-    /*Defining the animation where the background of the body changes from one color to another*/
-    @keyframes gradient {
-        0% {
+}
+
+/*Defining the animation where the background of the body changes from one color to another*/
+@keyframes gradient {
+    0% {
         background-position: 0% 50%;
-        }
-        50% {
+    }
+    50% {
         background-position: 100% 50%;
-        }
-        100% {
-        background-position: 0% 50%;
-        }
     }
+    100% {
+        background-position: 0% 50%;
+    }
+}
 
 
 .logo {
@@ -156,7 +156,7 @@ body {
     position: fixed;
     left: 650px;
     top: 100px;
- 
+
     background-color: transparent;
 }
 
@@ -164,7 +164,7 @@ body {
     position: fixed;
     left: 650px;
     top: 150px;
-    
+
     border-radius: 15px;
     background-color: #222e3a;
 }
@@ -173,7 +173,7 @@ body {
     position: fixed;
     left: 650px;
     top: 220px;
-    
+
     border-radius: 15px;
     background-color: #222e3a;
 }
@@ -222,42 +222,32 @@ body {
     position: fixed;
     left: 100px;
     top: 20px;
-    
+
 }
 
 .serverRoomList{
-    position: fixed;
-    left: 100px;
-    top: 100px;
-    width: 100px;
+    position: relative;
+    width: 100%;
     background-color: aliceblue;
 }
 
-.serverRoomTitle{
-    position: fixed;
-    left: 100px;
-    top: 20px;
-    width: 200px;
+.ServerListTitle
+{
+    position: relative;
+    background-image: linear-gradient(45deg, #9b55dd, #3e0079);
+    color: white;
     height: 40px;
-    background-color: #26A69A;
-}
-
-.serverRoomTitle:hover{
-    transform: translate(0px,-10px);
-    transition: all 0.25s ease-in-out;
-    box-shadow: 5px 5px 5px #E3F2FD;
-}
-
-
-.userList{
-    position: fixed;
-    left: 1650px;
-    top: 100px;
-    width: 200px;
-    height: 825px;
-    background-color: aliceblue;
+    width: 110%;
+    left: -5%;
     border-radius: 20px;
+    padding: 2px 0px 19px 0px;
+    vertical-align: center;
+    margin-bottom: 20px;
+    top: -10px;
+    font-size: 20px;
+    font-weight: bold;
 }
+
 
 .userListTitle{
     position: fixed;
@@ -270,36 +260,40 @@ body {
 
 .roomList
 {
-    position: fixed;
-    left: 150px;
-    width: 200px;
-    padding: 10px;
-    top: 80px;
-    height: 825px;
+    position: relative;
+    left: -32%;
+    width: 15%;
+    top: 12%;
+    height: 80%;
     background-color: #b8abd3;
     margin-right: 30px;
     border-radius: 20px;
-
 }
 
-.userList{
-    position: fixed;
-    left: 1650px;
-    top: 100px;
-    width: 200px;
-    height: 825px;
-    background-color: rgb(97, 235, 205);
+.userList
+{
+    position: relative;
+    left: 27%;
+    top: 10%;
+    width: 15%;
+    height: 83%;
     border-radius: 20px;
+    background-color: rgb(97, 235, 205);
 }
 
 .displayName{
     position: fixed;
-    left: 850px;
-    top: 20px;
+    left: 89.29%;
     width: 200px;
     height: 40px;
-    background-color: #26A69A;
-    border-radius: 20px;
+    background-color: #46dffa;
+}
+
+.title-name
+{
+    position: relative;
+    left: 43%;
+    top: -18%;
 }
 
 .displayNameButton{
@@ -329,3 +323,37 @@ body {
     height: 40px;
     background-color: #26A69A;
 }
+
+.ServerUsersList
+{
+    position: relative;
+    background-image: linear-gradient(45deg, #9b55dd, #3e0079);
+    color: white;
+    height: 40px;
+    width: 110%;
+    left: -6%;
+    border-radius: 20px;
+    padding: 2px 0px 19px 0px;
+    vertical-align: center;
+    margin-bottom: 20px;
+    top: -1px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.RoomButton
+{
+    position: fixed;
+    top: 85%;
+    left: 5%;
+}
+
+.createRoomButton
+{
+    background-image: linear-gradient(45deg, #9b55dd, #3e0079);
+    height: 50px;
+    width: 190%;
+    border-radius: 20px;
+    color: white;
+}
+
