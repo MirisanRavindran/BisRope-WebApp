@@ -13,7 +13,7 @@ function displayServerID(){
     el.setAttribute("class", "title-name")
     el.innerHTML = `
                             <div>
-                                <p>${name}</p>
+                                <p>Server ID: ${name}</p>
                             </div>
                     `;
     messageContainer.appendChild(el);

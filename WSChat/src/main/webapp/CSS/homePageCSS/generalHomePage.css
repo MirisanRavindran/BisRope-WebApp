@@ -183,8 +183,21 @@ body {
     display: inline;
     margin-right: auto;
     position: relative;
-    right: 10px;
-  }
+    left: 209%;
+    top: 185px;
+}
+#serverTable{
+    color: white;
+}
+#serverTable a {
+    color: white;
+}
+.GoBackButton{
+    position: relative;
+    left: 1430%;
+    top: 890px;
+    background-color: deepskyblue;
+}
   .createServerButton {
     background: #5E5DF0;
     border-radius: 20px;
@@ -206,6 +219,9 @@ body {
     word-break: break-word;
     border: 0;
     display: inline;
+    position: relative;
+    left: 160%;
+    top: 140px;
   }
 
 /*.server-list:hover{*/

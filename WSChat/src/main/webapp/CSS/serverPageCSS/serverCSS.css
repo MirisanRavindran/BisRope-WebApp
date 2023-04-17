@@ -283,7 +283,7 @@ body {
 
 .displayName{
     position: fixed;
-    left: 89.29%;
+    left: 90%;
     width: 200px;
     height: 40px;
     background-color: #46dffa;
@@ -292,7 +292,7 @@ body {
 .title-name
 {
     position: relative;
-    left: 43%;
+    left: 20%;
     top: -18%;
 }
 

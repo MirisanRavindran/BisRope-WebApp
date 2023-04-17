@@ -22,13 +22,14 @@ function enterRoom(code) {
         let message = JSON.parse(event.data);
         let messageContainer = document.querySelector(".textArea");
         let el = document.createElement("div");
+        let time = timestamp();
         if (message.type === "chat")
         {
             el.setAttribute("class", "text-bubble")
             el.innerHTML = `
                         <div class="Message">
                             <div>
-                                <div><p>${message.message}</p><div>
+                                <div><p>[${time}] ${message.message}</p><div>
                             </div>
                         </div>
                     `;
@@ -39,6 +40,7 @@ function enterRoom(code) {
             el.setAttribute("class", "image-container")
             el.innerHTML = `
                         <div>
+                        [${time}]
                             <img src='${message.message}' class="img-fluid"/>
                         </div>
                     `;

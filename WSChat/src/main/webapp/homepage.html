@@ -19,7 +19,7 @@
                 </div>
             </div>
             <div class = "GoBack">
-                <button class="GoBack" onclick="goBack()">Log Out</button>
+                <button class="GoBackButton" onclick="goBack()">Log Out</button>
             </div>
         </div>
     </header>
@@ -37,15 +37,15 @@
               <th>Server ID</th>
             </tr>
           </table>
-          <div class="buttons">
-            <div class="serverButtonContainer">
-                <input type="text" id="serverName" class="serverInputBox" placeholder="Server Name or ID"></input>
-                <button class="joinServerButton" onclick="addExistingServer()">Join Existing Server</button>
-                <button class="createServerButton" onclick="createNewServer()">Create New Server</button>
-            </div>
-        </div>
       </center>
     </div>
+     <div class="buttons">
+         <div class="serverButtonContainer">
+             <input type="text" id="serverName" class="serverInputBox" placeholder="Server Name or ID"></input>
+             <button class="joinServerButton" onclick="addExistingServer()">Join Existing Server</button>
+             <button class="createServerButton" onclick="createNewServer()">Create New Server</button>
+         </div>
+     </div>
   </div>
 <!--Displays two buttons, one to make a new server, and one to make a new dm-->
     
