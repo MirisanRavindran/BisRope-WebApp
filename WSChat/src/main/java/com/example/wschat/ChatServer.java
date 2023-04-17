@@ -57,7 +57,7 @@ public class ChatServer {
         else if (type.equals("image")) {
             for (Session peer : session.getOpenSessions()) {
                 // only send my messages to those in the same room
-                peer.getBasicRemote().sendText("{\"type\": \"image\", \"message\":\"" + message + "\", \"username\":\"" + username + "\"}");
+                peer.getBasicRemote().sendText("{\"type\": \"image\", \"message\":\"" + message + "\", \"username\":\"" + user + "\"}");
             }
         }
     }
