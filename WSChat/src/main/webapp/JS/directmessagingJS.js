@@ -1,3 +1,4 @@
+
 // The primary JS file, which contains the main functions for communicating with the server
 
 // The web socket
@@ -19,7 +20,30 @@ function enterRoom(code) {
     ws.onmessage = function (event) {
         console.log(event.data);
         let message = JSON.parse(event.data);
-        document.getElementById("log").value += "[" + timestamp() + "] " + message.message + "\n";
+        let messageContainer = document.getElementById("log");
+        let el = document.createElement("div");
+        if (message.type === "chat")
+        {
+            el.setAttribute("class", "text-bubble")
+            el.innerHTML = `
+                        <div class="Message">
+                            <div>
+                                <div><p>${message.message}</p><div>
+                            </div>
+                        </div>
+                    `;
+            messageContainer.appendChild(el);
+        }
+        else if (message.type === "image") {
+            console.log(message)
+            el.setAttribute("class", "image-container")
+            el.innerHTML = `
+                        <div>
+                            <img src='${message.message}' class="img-fluid"/>
+                        </div>
+                    `;
+            messageContainer.appendChild(el);
+        }
     }
     document.getElementById("input").addEventListener("keyup", function (event) {
         if (event.keyCode === 13) {
@@ -28,6 +52,31 @@ function enterRoom(code) {
             event.target.value = "";
         }
     });
+}
+function ChooseImage() {
+    document.getElementById('imageFile').click();
+}
+function SendImage(event) {
+    var file = event.files[0];
+
+    if (!file.type.match("image.*")) {
+        alert("Please select image only.");
+    }
+    else {
+        var reader = new FileReader();
+
+        reader.addEventListener("load", function(){
+                let message = reader.result;
+                let request = {"type":"image", "msg": message};
+                ws.send(JSON.stringify(request));
+
+                //document.getElementById("image").innerHTML += "[" + timestamp() + "] " + message + "\n";
+            }
+            , false);
+        if (file) {
+            reader.readAsDataURL(file);
+        }
+    }
 }
 function goBack(){
     window.location.href = "serverpage.html";
@@ -39,5 +88,32 @@ function timestamp() {
     return d.getHours() + ':' + minutes;
 }
 
+const container = document.getElementById("log");
 
+container.addEventListener('wheel', (e) => {
+    e.preventDefault();
+    container.scrollBy(0, e.deltaY);
 
+    const scrollHeight = container.scrollHeight;
+    const height = container.clientHeight;
+    const maxScrollTop = scrollHeight - height;
+    const currentScrollTop = container.scrollTop;
+
+    if (currentScrollTop === maxScrollTop && e.deltaY > 0) {
+        e.preventDefault();
+    }
+
+    if (currentScrollTop === 0 && e.deltaY < 0) {
+        e.preventDefault();
+    }
+});
+
+function showEmojiPanel() {
+    document.querySelector(".emoji-container").removeAttribute("style");
+}
+function hideEmojiPanel() {
+    document.querySelector(".emoji-container").setAttribute("style", "display:none;");
+}
+function getEmoji(code) {
+    document.getElementById("input").value += code.textContent;
+}
