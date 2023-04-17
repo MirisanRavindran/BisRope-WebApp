@@ -237,8 +237,8 @@ body {
     background-image: linear-gradient(45deg, #9b55dd, #3e0079);
     color: white;
     height: 40px;
-    width: 120%;
-    left: -10%;
+    width: 110%;
+    left: -5%;
     border-radius: 20px;
     padding: 2px 0px 19px 0px;
     vertical-align: center;
@@ -261,9 +261,8 @@ body {
 .roomList
 {
     position: relative;
-    left: -35%;
+    left: -32%;
     width: 15%;
-    padding: 10px;
     top: 12%;
     height: 80%;
     background-color: #b8abd3;
@@ -275,21 +274,26 @@ body {
 {
     position: relative;
     left: 27%;
-    top: 100px;
+    top: 10%;
     width: 15%;
-    height: 825px;
+    height: 83%;
     border-radius: 20px;
     background-color: rgb(97, 235, 205);
 }
 
 .displayName{
     position: fixed;
-    left: 850px;
-    top: 20px;
+    left: 89.29%;
     width: 200px;
     height: 40px;
-    background-color: #26A69A;
-    border-radius: 20px;
+    background-color: #46dffa;
+}
+
+.title-name
+{
+    position: relative;
+    left: 43%;
+    top: -18%;
 }
 
 .displayNameButton{
@@ -323,7 +327,8 @@ body {
 .ServerUsersList
 {
     position: relative;
-    background-image: linear-gradient(45deg, #9b55dd, #3e0079);color: white;
+    background-image: linear-gradient(45deg, #9b55dd, #3e0079);
+    color: white;
     height: 40px;
     width: 110%;
     left: -6%;
@@ -335,3 +340,20 @@ body {
     font-size: 20px;
     font-weight: bold;
 }
+
+.RoomButton
+{
+    position: fixed;
+    top: 85%;
+    left: 5%;
+}
+
+.createRoomButton
+{
+    background-image: linear-gradient(45deg, #9b55dd, #3e0079);
+    height: 50px;
+    width: 190%;
+    border-radius: 20px;
+    color: white;
+}
+

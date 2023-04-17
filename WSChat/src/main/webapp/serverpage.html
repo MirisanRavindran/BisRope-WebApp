@@ -25,31 +25,20 @@
 
 </header>
 
-<div class = "displayName">
-    <button class="displayNameButton" onclick="displayServerID()">Server ID</button>
-</div>
-<div class = "RoomButton">
-    <button class="createRoomButton" onclick="createNewRoom()">New Room</button>
+<div class = "displayName" onload="displayServerID()">
+
 </div>
 
 
-<<<<<<< HEAD
 <!--Displays a list of the rooms in the server-->
 <div class="roomList">
     <center>
         <div class="ServerListTitle">
             <p>Room List</p>
-=======
+        </div>
     <!--Displays a list of the rooms in the server-->
-    <div class="roomList">
-        <div class="serverRoomList">
-            <h3 class="serverRoomTitle" >Server Rooms</h3>
-            <table class="serverRoomTable" id="serverRoomTable">
-                <tr>
-                    <th>Room ID</th>
-                </tr>
-            </table>
->>>>>>> main
+        <div class="roomList">
+            <div class="serverRoomList"></div>
         </div>
         <table class="serverRoomTable" id="serverRoomTable">
             <tr>
@@ -57,6 +46,10 @@
             </tr>
         </table>
     </center>
+</div>
+
+<div class = "RoomButton">
+    <button class="createRoomButton" onclick="createNewRoom()">New Room</button>
 </div>
 
 </div>
@@ -69,7 +62,7 @@
         </div>
         <table class="UserTable" id="UserTable">
             <tr>
-                <th>Room ID</th>
+                <th>Users</th>
             </tr>
         </table>
     </center>
