@@ -20,7 +20,7 @@ function enterRoom(code) {
     ws.onmessage = function (event) {
         console.log(event.data);
         let message = JSON.parse(event.data);
-        let messageContainer = document.getElementById("log");
+        let messageContainer = document.querySelector(".textArea");
         let el = document.createElement("div");
         if (message.type === "chat")
         {
@@ -45,7 +45,7 @@ function enterRoom(code) {
             messageContainer.appendChild(el);
         }
     }
-    document.getElementById("input").addEventListener("keyup", function (event) {
+    document.getElementById("inputText").addEventListener("keyup", function (event) {
         if (event.keyCode === 13) {
             let request = {"type":"chat", "msg":event.target.value};
             ws.send(JSON.stringify(request));
@@ -115,5 +115,5 @@ function hideEmojiPanel() {
     document.querySelector(".emoji-container").setAttribute("style", "display:none;");
 }
 function getEmoji(code) {
-    document.getElementById("input").value += code.textContent;
+    document.getElementById("inputText").value += code.textContent;
 }

@@ -10,6 +10,7 @@
     <link href="CSS/chat.css" rel="stylesheet"/>
     <link href="CSS/tabs.css" rel="stylesheet"/>
     <link href="CSS/about.css" rel="stylesheet"/>
+    <link href="CSS/dm.css" rel="stylesheet"/>
     <script defer src="JS/directmessagingJS.js"></script>
     <script defer src="JS/tab.js"></script>
     <script defer src="JS/effects.js"></script>
@@ -41,63 +42,38 @@
     <img id="elblobbo3" src="Images/blob3.svg" class="blob3" width="200" height="200">
 
 
-    <!--The content of the chat page-->
-    <div id="chat">
-        <!--Displays a list of active chat rooms, and an option to create a new one-->
-        <div class="app">
-            <div title="Chat Log" id="log" readonly
-                 style="display: block; width: 100%; height: 600px; resize: none; margin: 0; padding: 0; border: 0;"></div>
-            <input title="Chat Input" id="input" type="text" style="display: block; width: 100%; border-width: 1px 0 1px 0;"
-                   autofocus/>
-            <div class="imgbtn">
-                <a onclick="ChooseImage()">
-                    Input File
-                    <input type="file" id="imageFile" onchange="SendImage(this);" accept="image/*" style="display: none"/>
-                </a>
-            </div>
-            <div class="infoCard">
-                <div class = "GoBack">
-                    <button class="GoBack" onclick="goBack()">Server</button>
-                </div>
-            </div>
-            <div>
-                <a onclick="showEmojiPanel()">&#128512;</a>
-            </div>
-            <div class="emoji-container">
-                <a onclick="getEmoji(this)">&#128557;</a>
-                <a onclick="getEmoji(this)">&#128526;</a>
-                <a onclick="getEmoji(this)">&#128512;</a>
-                <a onclick="getEmoji(this)">&#128514;</a>
-                <a onclick="getEmoji(this)">&#129313;</a>
-                <a onclick="getEmoji(this)">&#129299;</a>
-                <a onclick="getEmoji(this)">&#128151;</a>
-                <a onclick="getEmoji(this)">&#128077;</a>
-                <a onclick="getEmoji(this)">&#129324;</a>
-                <a onclick="getEmoji(this)">&#128564;</a>
-            </div>
-
-            <!--Class containing the chatroom interface-->
-
-            <div class="screen chat-screen">
-                <div class="header">
-                    <div class="logo">Chatroom</div>
-                </div>
-
-                <div class="messages">
-                    <div id="update-user" class="update"></div>
-                    <div class="message other-message"></div>
-                </div>
-
-
-                <div class="typebox">
-                    <textarea onwheel="scrollTextarea(event)" type="text" id="message-input" placeholder="Text Message" required ></textarea>
-                    <button id="send-message" onclick="sendMessage()">Send</button>
+    <div class="ChatBox">
+        <div class="ChatSpace" >
+            <div class="textArea" >
+                <div class="Message">
                 </div>
             </div>
         </div>
+        <div class="inputArea">
+            <input autocomplete="off" title="Chat Input" placeholder="Message" id="inputText" onfocus="hideEmojiPanel()" type="text" autofocus/>
+        </div>
     </div>
+    <div class="imgbtn">
+        <a onclick="ChooseImage()">
+            Input File
+            <input type="file" id="imageFile" onchange="SendImage(this);" accept="image/*" style="display: none"/>
+        </a>
     </div>
-</div>
+    <div>
+        <a onclick="showEmojiPanel()">&#128512;</a>
+    </div>
+    <div class="emoji-container">
+        <a onclick="getEmoji(this)">&#128557;</a>
+        <a onclick="getEmoji(this)">&#128526;</a>
+        <a onclick="getEmoji(this)">&#128512;</a>
+        <a onclick="getEmoji(this)">&#128514;</a>
+        <a onclick="getEmoji(this)">&#129313;</a>
+        <a onclick="getEmoji(this)">&#129299;</a>
+        <a onclick="getEmoji(this)">&#128151;</a>
+        <a onclick="getEmoji(this)">&#128077;</a>
+        <a onclick="getEmoji(this)">&#129324;</a>
+        <a onclick="getEmoji(this)">&#128564;</a>
+    </div>
 </div>
 </body>
 </html>

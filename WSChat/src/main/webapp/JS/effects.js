@@ -11,7 +11,7 @@ const lines = [ //The lines array contains the message that will greet new users
     "between the two, our logo is actually just the head of Galactus. Despite everything, people fail to see what BisRope is actually meant for. ",
     "BisRope is unique in the sense that it allows people to talk to each other in the comfort of their own homes. ",
     "It lets people share stories, and form bonds, what will you say first?"
-  ];
+];
 
 //Each line from the lines array has to be stored in it's own constant variable to be used by the typeLine function.
 const l1 = document.getElementById("line1");
@@ -27,7 +27,7 @@ const l8 = document.getElementById("line8");
 let aboutCards = document.querySelectorAll('.about-card');
 
 //The gradient constant variable is used to store all the colors that will be used by the gradientActuate function to actuate the gradient effect.
-var gradient = ['#29B6F6', '26C6DA', '#26A69A', '#42A5F5', '#5C6BC0', '#7E57C2', '#AB47BC'] 
+var gradient = ['#29B6F6', '26C6DA', '#26A69A', '#42A5F5', '#5C6BC0', '#7E57C2', '#AB47BC']
 
 
 
@@ -52,7 +52,7 @@ function typeLine(line, text, delay){
 
 //the typeLine function is called 6 times, each time with a different parameter. The first parameter is the line variable, which is the element that will display the text. The second parameter is the text variable, which is the text that will be displayed on the website. 
 //The third parameter is the delay variable, which is the delay between each character being displayed.
-setTimeout(() => typeLine(line1, lines[0], 50), 1000); 
+setTimeout(() => typeLine(line1, lines[0], 50), 1000);
 setTimeout(() => typeLine(line2, lines[1], 50), 2000);
 setTimeout(() => typeLine(line3, lines[2], 50), 3000);
 setTimeout(() => typeLine(line4, lines[3], 50), 4000);
